@@ -1,19 +1,5 @@
 let mapleader=";"
 filetype plugin on
-nmap lb 0
-nmap le $
-vnoremap <Leader>y "+y"
-vnoremap <Leader>p "+p"
-nmap <Leader>q :q<CR>
-nmap <Leader>w :w<CR>
-nmap <Leader>WQ :wa<CR>:q<CR>
-nmap <Leader>Q :qa!<CR>
-nnoremap nw <C-W><C-W>
-nnoremap <Leader>lw <C-W>l
-nnoremap <Leader>hw <C-W>h
-nnoremap <Leader>kw <C-W>k
-nnoremap <Leader>jw <C-W>j
-nmap <Leader>pa %
 
 set incsearch
 set ignorecase
@@ -41,3 +27,29 @@ set smarttab
 set splitright
 set splitbelow
 set dir=~/tmp
+
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
+
+nmap lb 0
+nmap le $
+nmap <Leader>q :q<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>WQ :wa<CR>:q<CR>
+nmap <Leader>Q :qa!<CR>
+nnoremap nw <C-W><C-W>
+nnoremap <Leader>lw <C-W>l
+nnoremap <Leader>hw <C-W>h
+nnoremap <Leader>kw <C-W>k
+nnoremap <Leader>jw <C-W>j
+nmap <Leader>pa %
+
+function! Preserve(command)
+    let _s=@/
+    let l=line(".")
+    let c=col(".")
+    execute a:command
+    let @/=_s
+    call cursor(l,c)
+endfunction
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+nmap _= :call Preserve("normal gg=G")<CR>
