@@ -34,3 +34,10 @@ set shiftwidth=4
 set softtabstop=4
 set foldmethod=syntax
 set nofoldenable
+set t_Co=256
+set cc=80
+set ai
+set smarttab
+set splitright
+set splitbelow
+set dir=~/tmp
