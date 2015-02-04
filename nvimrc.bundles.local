@@ -148,3 +148,7 @@ let g:syntastic_warning_symbol = '⚠'
 map <SPACE> <Plug>(wildfire-fuel)
 vmap <S-SPACE> <Plug>(wildfire-water)
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
+
+let g:UltiSnipsExpandTrigger="<Leader>kk"
+let g:UltiSnipsJumpForwardTrigger="<Leader>kf"
+let g:UltiSnipsJumpBackwardTrigger="<Leader>kb"

@@ -27,7 +27,10 @@ set ai
 set smarttab
 set splitright
 set splitbelow
-set dir=~/tmp
+set dir=~/.nvim/nvim_swap/
+set backup
+set backupdir=~/.nvim/nvim_backup/
+set undodir=~/.nvim/nvim_undo/
 
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
 

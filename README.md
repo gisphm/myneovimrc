@@ -20,6 +20,9 @@
 + nvimrc.bundles 包含所有的插件名称和安装方式
 + nvimrc.bundles.local 包含所有插件的一些配置
 + nvimrc.local 是neovim自身的一些配置，与插件无关
++ .nvim/nvim_swap 是neovim的交换文件存放位置
++ .nvim/nvim_undo 是neovim的撤销文件存放位置
++ .nvim/nvim_backup 是neovim的备份文件存放位置
 
 ### 感谢
 + 出色的插件管理器Vundle.vim

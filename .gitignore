@@ -1,1 +1,4 @@
 bundle/
+nvim_backup/
+nvim_swap/
+nvim_undo/
