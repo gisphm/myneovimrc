@@ -3,12 +3,12 @@
 
 ### 插件列表
 目前已经添加的插件有：
-插件管理器 Vundle
-状态栏 vim-airline
-主题包 vim-colorschemes
-STL语法 STL-Syntax
-缩进连接线 vim-indent-guides
-Git插件 vim-fugitive
++ 插件管理器 Vundle
++ 状态栏 vim-airline
++ 主题包 vim-colorschemes
++ STL语法 STL-Syntax
++ 缩进连接线 vim-indent-guides
++ Git插件 vim-fugitive
 
 ### 配置思路
 + nvimrc 作为主体，简单的Vundle初始化及包含其他配置文件
