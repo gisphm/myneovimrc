@@ -1,0 +1,36 @@
+let mapleader=";"
+filetype plugin on
+nmap lb 0
+nmap le $
+vnoremap <Leader>y "+y"
+vnoremap <Leader>p "+p"
+nmap <Leader>q :q<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>WQ :wa<CR>:q<CR>
+nmap <Leader>Q :qa!<CR>
+nnoremap nw <C-W><C-W>
+nnoremap <Leader>lw <C-W>l
+nnoremap <Leader>hw <C-W>h
+nnoremap <Leader>kw <C-W>k
+nnoremap <Leader>jw <C-W>j
+nmap <Leader>pa %
+
+set incsearch
+set ignorecase
+set wildmenu
+set laststatus=2
+set ruler
+set number
+set cursorline
+set cursorcolumn
+set hlsearch
+set wrap
+syntax enable
+syntax on
+filetype indent on
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set foldmethod=syntax
+set nofoldenable

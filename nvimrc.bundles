@@ -1,0 +1,7 @@
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Mizuchi/STL-Syntax'
+Plugin 'nathanaelkane/vim-indent-guides'
