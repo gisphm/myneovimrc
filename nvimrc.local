@@ -46,7 +46,7 @@ set shiftwidth=4
 " 让vim把连续数量的空格视为一个制表符
 set softtabstop=4
 " 基于缩进进行代码折叠
-set foldmethod=indent
+set foldmethod=syntax
 " 启动vim开启折叠代码
 set foldenable
 " 开启vim时的控制台颜色可显示数量
