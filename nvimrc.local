@@ -1,4 +1,4 @@
-" Modeline and Notes {
+" 文档说明 {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 " }
 
@@ -71,6 +71,10 @@ set backupdir=~/.nvim/nvim_backup/
 set undodir=~/.nvim/nvim_undo/
 " 记录nvim编辑文件的信息
 set viminfo='10,\"100,:20,n~/.nviminfo
+" 设置tags文件位置
+set tags+=./tags,tags,~/.nvim/tags
+" 设置补全的选项
+set completeopt=menuone,preview
 
 " nvim可打开的文件编码列表
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
