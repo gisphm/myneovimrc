@@ -2,18 +2,7 @@
 这是一份简单的neovim配置，至少目前是这样的。
 
 ### 插件列表
-目前已经添加的插件有：
-+ 插件管理器 [Vundle][1]
-+ 状态栏 [vim-airline][2]
-+ 缓冲区插件 [vim-bufferline][3]
-+ 主题包 [vim-colorschemes][9]
-+ STL语法 [STL-Syntax][7]
-+ 缩进连接线 [vim-indent-guides][6]
-+ Git插件 [vim-fugitive][4]
-+ sparkup（更快地写html）[sparkup][8]
-+ 文件版本控制状态显示 [vim-gitgutter][11]
-+ 文件夹管理器 [nerdtree][5]
-+ repeat [vim-repeat][10]
+[插件列表](PluginList.md)
 
 ### 配置思路
 + nvimrc 作为主体，简单的Vundle初始化及包含其他配置文件
@@ -35,15 +24,3 @@
 
 ### License
 请自取自用。
-
-[1]: https://github.com/gmarik/Vundle.vim
-[2]: https://github.com/bling/vim-airline
-[3]: https://github.com/bling/vim-bufferline
-[4]: https://github.com/tpope/vim-fugitive
-[5]: https://github.com/scrooloose/nerdtree
-[6]: https://github.com/nathanaelkane/vim-indent-guides
-[7]: https://github.com/Mizuchi/STL-Syntax
-[8]: https://github.com/rstacruz/sparkup
-[9]: https://github.com/flazz/vim-colorschemes
-[10]: https://github.com/tpope/vim-repeat
-[11]: https://github.com/airblade/vim-gitgutter
