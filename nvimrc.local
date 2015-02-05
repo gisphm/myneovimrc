@@ -31,6 +31,7 @@ set dir=~/.nvim/nvim_swap/
 set backup
 set backupdir=~/.nvim/nvim_backup/
 set undodir=~/.nvim/nvim_undo/
+set viminfo='10,\"100,:20,n~/.nviminfo
 
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
 
@@ -89,3 +90,15 @@ nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' wit
 " 确认、整词
 nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
