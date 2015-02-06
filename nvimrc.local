@@ -69,6 +69,8 @@ set backup
 set backupdir=~/.nvim/nvim_backup/
 " 撤销文件夹位置
 set undodir=~/.nvim/nvim_undo/
+" 设置视图保存位置
+set viewdir=~/.nvim/nvim_views/
 " 记录nvim编辑文件的信息
 set viminfo='10,\"100,:20,n~/.nviminfo
 " 设置tags文件位置
@@ -194,4 +196,5 @@ augroup END
 
 " git提交时光标在第一行
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
 " }
