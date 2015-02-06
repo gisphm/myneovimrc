@@ -29,6 +29,7 @@
 + 自动生成tag [vim-easytags][29] ([vim-misc][28] 为easytags所需)
 + clang-format [vim-clang-format][31] ([vim-operator-user][30] 为推荐)
 + 结对符自动补全 [delimiMate][32]
++ 还原视图 [restore_view][33]
 
 返回[README](README.md)
 
@@ -64,3 +65,4 @@
 [30]: https://github.com/kana/vim-operator-user
 [31]: https://github.com/rhysd/vim-clang-format
 [32]: https://github.com/Raimondi/delimitMate
+[33]: https://github.com/vim-scripts/restore_view.vim
