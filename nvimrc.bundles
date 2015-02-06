@@ -30,4 +30,3 @@ Plugin 'xolox/vim-easytags'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'Raimondi/delimitMate'
-Plugin 'abudden/taghighlight-automirror', {'name': 'taghighlight'}
