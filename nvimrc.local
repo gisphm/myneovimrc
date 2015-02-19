@@ -53,6 +53,8 @@ set foldenable
 set t_Co=256
 " 高亮第80列
 set cc=80
+" 自动切换目录
+set autochdir
 " 自动缩进
 set ai
 " 自动制表符
