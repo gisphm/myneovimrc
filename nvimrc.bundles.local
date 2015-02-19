@@ -4,7 +4,8 @@
 
 " 主题 {{{
 
-colo Monokai-chris
+colo lucius
+LuciusDarkHighContrast
 
 " }}}
 
