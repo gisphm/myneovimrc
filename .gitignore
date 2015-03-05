@@ -1,8 +1,8 @@
 bundle/
-nvim_backup/
-nvim_swap/
-nvim_undo/
-nvim_views/
+backup/
+swap/
+undo/
+view/
 *.pyc
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
