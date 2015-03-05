@@ -224,6 +224,7 @@ let g:ctrlp_custom_ignore = {
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
+let g:ycm_show_diagnostics_ui = 0
 
 " }}}
 

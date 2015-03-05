@@ -61,6 +61,8 @@ set smarttab
 set splitright
 " 新分割的窗体在下面
 set splitbelow
+" 自动切换路径
+set acd
 " 交换文件夹位置
 set dir=~/.nvim/swap/
 " 开启备份
