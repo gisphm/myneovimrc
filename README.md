@@ -1,3 +1,5 @@
+[English Version README](README.EN.md)
+
 ### 概述
 这是一份简单的neovim配置，至少目前是这样的。
 
