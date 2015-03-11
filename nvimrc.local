@@ -78,7 +78,12 @@ set viewdir=~/.nvim/view/
 " 记录nvim编辑文件的信息
 set viminfo='10,\"100,:20,n~/.nviminfo
 " 设置tags文件位置
-set tags+=./tags,tags,~/.nvim/tags
+" cd /usr/include/c++/4.9.2
+" run ctags -R --c++-kinds=+l+x+p --fields=+iaSl --extra=+q
+" --language-force=c++ -f stdcpp.tags
+" cd /usr/include
+" run ctags -R --c-kinds=+l+x+p --fields=+lS -I __THROW,__nonnull -f sys.tags
+set tags+=./tags,tags,~/.nvim/sys.tags,~/.nvim/stdcpp.tags
 " 设置补全的选项
 set completeopt=menuone,preview
 
