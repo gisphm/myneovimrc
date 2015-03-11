@@ -1,8 +1,8 @@
-" 文档说明 {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
-" }
+" 文档说明 {{{
+" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
+" }}}
 
-" 常规设置 {
+" 常规设置 {{{
 
 " 快捷键的前缀
 let mapleader=";"
@@ -100,9 +100,9 @@ set iskeyword-=.
 set iskeyword-=#
 set iskeyword-=-
 
-" }
+" }}}
 
-" 函数列表 {
+" 函数列表 {{{
 
 " 保留光标
 " 即执行command命令后光标不会移走
@@ -146,9 +146,9 @@ function! Replace(confirm, wholeword, replace)
     execute 'argdo %s/' . search . '/' . replace . '/' . flag . '| update'
 endfunction
 
-" }
+" }}}
 
-" 键盘映射 {
+" 键盘映射 {{{
 
 " 行首
 nmap lb 0
@@ -188,9 +188,9 @@ nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' wit
 nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 
-" }
+" }}}
 
-" 其他 {
+" 其他 {{{
 
 " 还原上次关闭文件时光标的位置
 augroup resCur
@@ -201,4 +201,4 @@ augroup END
 " git提交时光标在第一行
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-" }
+" }}}
