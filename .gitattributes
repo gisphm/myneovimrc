@@ -1,1 +1,3 @@
-nvimrc* linguist-language=VimL
+nvimrc linguist-language=VimL
+*.bundles linguist-language=VimL
+*.local linguist-language=VimL
