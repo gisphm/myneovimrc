@@ -252,13 +252,3 @@ autocmd FileType c,cpp,objc map <buffer><Leader>cx <Plug>(operator-clang-format)
 nmap <Leader>cf :ClangFormatAutoToggle<CR>
 
 " }}}
-
-" EasyTags {{{
-
-autocmd FileType c,cpp let b:easytags_auto_highlight = 1
-let g:easytags_file = '~/.nvim/tags'
-let g:easytags_dynamic_files = 1
-let g:easytags_always_enabled = 1
-let g:easytags_on_cursorhold = 1
-
-" }}}
