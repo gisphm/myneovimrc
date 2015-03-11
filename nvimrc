@@ -1,5 +1,3 @@
-" vim样
-set nocompatible
 " 关闭文件类型探测，Vundle必须
 filetype off
 
@@ -9,7 +7,11 @@ if !filereadable(vundleReadme)
     echo "Installing Vundle ..."
     echo ""
     silent !mkdir -p ~/.nvim/bundle
-    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.nvim/bundle/
+    silent !mkdir -p ~/.nvim/backup
+    silent !mkdir -p ~/.nvim/swap
+    silent !mkdir -p ~/.nvim/undo
+    silent !mkdir -p ~/.nvim/view
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.nvim/bundle/Vundle.vim/
     let vundleInitial=0
 endif
 
