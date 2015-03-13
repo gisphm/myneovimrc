@@ -244,11 +244,3 @@ let g:UltiSnipsJumpForwardTrigger="<Leader>f"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>b"
 
 " }}}
-
-" ClangFormat {{{
-
-let g:clang_format#code_style='llvm'
-autocmd FileType c,cpp,objc map <buffer><Leader>cx <Plug>(operator-clang-format)
-nmap <Leader>cf :ClangFormatAutoToggle<CR>
-
-" }}}

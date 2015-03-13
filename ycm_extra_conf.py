@@ -69,6 +69,12 @@ flags = [
 '/usr/local/include',
 '-isystem',
 '/usr/include/c++/4.9.2',
+'-isystem',
+'/usrlib/gcc/x86_64-linux-gnu/4.9/include'
+'-isystem',
+'include',
+'-isystem',
+'sys',
 ]
 
 
