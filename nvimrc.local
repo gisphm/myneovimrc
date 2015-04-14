@@ -156,6 +156,7 @@ endfunction
 
 " 键盘映射 {{{
 
+inoremap jk <Esc>
 " 行首
 nmap lb 0
 " 行末
