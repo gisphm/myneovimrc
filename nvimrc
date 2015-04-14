@@ -31,7 +31,7 @@ set rtp+=~/.nvim/bundle/Vundle.vim
 call vundle#begin('~/.nvim/bundle/')
 
 " 调用插件列表
-source ~/.nvim/nvimrc.bundles
+source ~/.nvim/bundles.rc.vim
 
 if vundleInitial == 0
     echo "Installing Bundles, please ignore keymap error messages"
@@ -50,8 +50,8 @@ filetype plugin indent on
 " 其他 {{{
 
 " 调用neovim自身设置
-source ~/.nvim/nvimrc.local
+source ~/.nvim/local.rc.vim
 " 调用插件设置
-source ~/.nvim/nvimrc.bundles.local
+source ~/.nvim/bundles.conf.vim
 
 " }}}
