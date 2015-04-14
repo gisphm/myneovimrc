@@ -199,7 +199,7 @@ let g:tagbar_type_cpp = {
 
 " }}}
 
-" CtrlP {{{
+" CtrlP and CtrlPFunky {{{
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
@@ -219,6 +219,10 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(exe|so|dll)$',
             \ 'link': 'some_bad_symbolic_links',
             \ }
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <Leader>pu :CtrlPFunky
+nnoremap <Leader>pU :execute 'CtrlPFunky' . expand('<cword>') <CR>
 
 " }}}
 
@@ -243,5 +247,45 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 let g:UltiSnipsExpandTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<Leader>f"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>b"
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsEditSplit="vertical"
+
+" }}}
+
+" Auto-Pairs {{{
+
+let g:AutoPairsFlyMode = 1
+
+" }}}
+
+" Vim-Easy-Align {{{
+
+vmap vip<Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+let g:easy_align_delimiters = {
+            \ '>': { 'pattern': '>>\|=>\|>'  },
+            \ '/': {
+            \     'pattern':         '//\+\|/\*\|\*/',
+            \     'delimiter_align': 'l',
+            \     'ignore_groups':   ['!Comment']
+            \    },
+            \ ']': {
+            \     'pattern':       '[[\]]',
+            \     'left_margin':   0,
+            \     'right_margin':  0,
+            \     'stick_to_left': 0
+            \    },
+            \ ')': {
+            \     'pattern':       '[()]',
+            \     'left_margin':   0,
+            \     'right_margin':  0,
+            \     'stick_to_left': 0
+            \    },
+            \ 'd': {
+            \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
+            \     'left_margin':  0,
+            \     'right_margin': 0
+            \    }
+            \ }
 
 " }}}
