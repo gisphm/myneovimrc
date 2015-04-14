@@ -51,6 +51,8 @@ set foldmethod=syntax
 set foldenable
 " 开启vim时的控制台颜色可显示数量
 set t_Co=256
+set t_AB=^[[48;5;%dm
+set t_AF=^[[38;5;%dm
 " 高亮第80列
 set cc=80
 " 自动切换目录
