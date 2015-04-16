@@ -221,7 +221,7 @@ let g:ctrlp_custom_ignore = {
             \ }
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <Leader>pu :CtrlPFunky
+nnoremap <Leader>pu :CtrlPFunky <CR>
 nnoremap <Leader>pU :execute 'CtrlPFunky' . expand('<cword>') <CR>
 
 " }}}
