@@ -8,16 +8,16 @@
 filetype off
 
 let vundleInitial=1
-let vundleReadme=expand('~/.nvim/bundle/Vundle.vim/README.md')
+let vundleReadme=expand('~/.nvim/bundles/Vundle.vim/README.md')
 if !filereadable(vundleReadme)
     echo "Installing Vundle ..."
     echo ""
-    silent !mkdir -p ~/.nvim/bundle
+    silent !mkdir -p ~/.nvim/bundles
     silent !mkdir -p ~/.nvim/backup
     silent !mkdir -p ~/.nvim/swap
     silent !mkdir -p ~/.nvim/undo
     silent !mkdir -p ~/.nvim/view
-    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.nvim/bundle/Vundle.vim/
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.nvim/bundles/Vundle.vim/
     let vundleInitial=0
 endif
 
@@ -26,12 +26,12 @@ endif
 " Vundle 的一点设置 {{{
 
 " Vundle的运行时目录
-set rtp+=~/.nvim/bundle/Vundle.vim
+set rtp+=~/.nvim/bundles/Vundle.vim
 " 调用Vundle的开始函数
-call vundle#begin('~/.nvim/bundle/')
+call vundle#begin('~/.nvim/bundles/')
 
 " 调用插件列表
-source ~/.nvim/bundles.rc.vim
+source ~/.nvim/bundles.vim
 
 if vundleInitial == 0
     echo "Installing Bundles, please ignore keymap error messages"
@@ -50,8 +50,8 @@ filetype plugin indent on
 " 其他 {{{
 
 " 调用neovim自身设置
-source ~/.nvim/local.rc.vim
+source ~/.nvim/local.vim
 " 调用插件设置
-source ~/.nvim/bundles.conf.vim
+source ~/.nvim/bundles.rc.vim
 
 " }}}

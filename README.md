@@ -9,9 +9,9 @@
 
 ### 配置思路
 + **nvimrc** 作为主体，简单的Vundle初始化及包含其他配置文件
-+ **nvimrc.bundles** 包含所有的插件名称和安装方式
-+ **nvimrc.bundles.local** 包含所有插件的一些配置
-+ **nvimrc.local** 是neovim自身的一些配置，与插件无关
++ **bundles.vim** 包含所有的插件名称和安装方式
++ **bundles.rc.vim** 包含所有插件的一些配置
++ **local.vim** 是neovim自身的一些配置，与插件无关
 + **.nvim/swap**
 + **.nvim/undo**
 + **.nvim/backup**

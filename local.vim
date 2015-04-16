@@ -176,8 +176,6 @@ nnoremap <Leader>lw <C-W>l
 nnoremap <Leader>hw <C-W>h
 nnoremap <Leader>kw <C-W>k
 nnoremap <Leader>jw <C-W>j
-" 在结对符之间跳转
-nmap <Leader>pa %
 
 " 消除行末空白
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>

@@ -12,11 +12,11 @@
 ### Things about Configuration
 + **nvimrc** -- the main configuration file.
   includes the initialization of Vundle and sources other configuration files.
-+ **nvimrc.bundles**
++ **bundles.vim**
   includes all the plugins needed to be installed and how the plugins install.
-+ **nvimrc.bundles.local**
++ **bundles.rc.vim**
   includes the configuration for the plugins installed.
-+ **nvimrc.local**
++ **local.vim**
   includes the configuration for neovim itself, not specified for the plugins.
 + **.nvim/swap**
 + **.nvim/undo**
