@@ -222,7 +222,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <Leader>pu :CtrlPFunky <CR>
-nnoremap <Leader>pU :execute 'CtrlPFunky' . expand('<cword>') <CR>
+nnoremap <Leader>fu :execute 'CtrlPFunky' . expand('<cword>') <CR>
 
 " }}}
 
@@ -236,8 +236,8 @@ let g:ycm_show_diagnostics_ui = 0
 
 " wildfire {{{
 
-map <SPACE> <Plug>(wildfire-fuel)
-vmap <S-SPACE> <Plug>(wildfire-water)
+map <SPACE>w <Plug>(wildfire-fuel)
+vmap <SPACE>w <Plug>(wildfire-water)
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
 " }}}
@@ -292,6 +292,7 @@ let g:easy_align_delimiters = {
 
 " Clang-Format {{{
 
+nnoremap <silent><Leader>cf :ClangFormat<CR>
 let g:clang_format#code_style = "llvm"
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_format_on_insert_leave = 1
