@@ -298,3 +298,69 @@ let g:clang_format#auto_format_on_insert_leave = 1
 let g:clang_format#auto_formatexpr = 1
 
 " }}}
+
+" JSHint2 {{{
+
+let jshint2_command = '/home/vagrant/tools/iojs/bin/jshint'
+nnoremap <silent><Space>h :JSHint<CR>
+nnoremap <silent><Space>n :lnext<CR>
+nnoremap <silent><Space>p :lprevious<CR>
+vnoremap <silent><Space>h :JSHint<CR>
+vnoremap <silent><Space>n :lnext<CR>
+vnoremap <silent><Space>p :lprevious<CR>
+
+"}}}
+
+" SemanticHighlight {{{
+
+nnoremap <Leader>sh :SemanticHighlightToggle<cr>
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+
+" }}}
+
+" emmet-vim {{{
+
+let g:user_emmet_settings = {
+            \ 'variables' : {
+            \   'lang' : 'en',
+            \ },
+            \ 'html' : {
+            \   'filters' : 'html',
+            \   'indentation' : ' ',
+            \   'expandos' : {
+            \     'ol': 'ol>li',
+            \       'list': 'ul>li*3',
+            \   },
+            \   'default_attributes': {
+            \     'a': {'href': ''},
+            \     'link': [{'rel': 'stylesheet'}, {'href': ''}],
+            \   },
+            \   'aliases': {
+            \     'bq': 'blockquote',
+            \     'obj': 'object',
+            \     'src': 'source',
+            \   },
+            \   'empty_elements': 'area,base,basefont,...,isindex,link,meta,...',
+            \   'block_elements': 'address,applet,blockquote,...,li,link,map,...',
+            \   'inline_elements': 'a,abbr,acronym,...',
+            \   'empty_element_suffix': ' />',
+            \ },
+            \ 'css' : {
+            \   'filters' : 'fc',
+            \ },
+            \ 'javascript' : {
+            \   'snippets' : {
+            \     'jq' : "\\$(function() {\n\t${cursor}${child}\n});",
+            \     'jq:each' : "\\$.each(arr, function(index, item)\n\t${child}\n});",
+            \     'fn' : "(function() {\n\t${cursor}\n})();",
+            \     'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
+            \   },
+            \ },
+            \ 'xml' : {
+            \   'extends' : 'html',
+            \ },
+            \ }
+let g:user_emmet_install_global = 0
+autocmd FileType html,javascript,css EmmetInstall
+
+" }}}

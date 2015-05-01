@@ -7,6 +7,8 @@
 " 关闭文件类型探测，Vundle必须
 filetype off
 
+" 以vundleReadme为存在与否的关键
+" 存在则不用再安装了
 let vundleInitial=1
 let vundleReadme=expand('~/.nvim/bundles/Vundle.vim/README.md')
 if !filereadable(vundleReadme)
