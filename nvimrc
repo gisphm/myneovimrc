@@ -37,6 +37,7 @@ if vundleInitial == 0
     echo "Installing Bundles, please ignore keymap error messages"
     echo ""
     :PluginInstall
+    :qa
 endif
 
 " 调用Vundle的结束函数
