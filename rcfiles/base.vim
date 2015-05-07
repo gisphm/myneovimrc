@@ -107,8 +107,6 @@ endfunction
 " 键盘映射 {{{
 
 inoremap jk <Esc>
-nmap lb 0
-nmap le $
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>WQ :wa<CR>:q<CR>
