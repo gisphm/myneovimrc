@@ -161,33 +161,6 @@ let g:tagbar_type_css = {
 
 " }}}
 
-" CtrlP and CtrlPFunky {{{
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_show_hidden=1
-let g:ctrlp_cache_dir=$HOME.'/.cache/ctrlp'
-let g:ctrlp_mruf_save_on_update = 1
-let g:ctrlp_user_command = {
-            \ 'types': {
-            \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-            \ },
-            \ 'fallback': s:ctrlp_fallback
-            \ }
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll)$',
-            \ 'link': 'some_bad_symbolic_links',
-            \ }
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <Leader>pu :CtrlPFunky <CR>
-nnoremap <Leader>fu :execute 'CtrlPFunky' . expand('<cword>') <CR>
-
-" }}}
-
 " Syntastic {{{
 
 let g:syntastic_error_symbol = '✗'
