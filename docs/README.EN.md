@@ -1,27 +1,21 @@
-[中文README](README.md)
+[中文README](docs/README.md)
 
 ### General
 + This is a simple fork for configuring neovim. As least by now it is simple.
-+ When this configuration has been ‘installed’ on your machine and
-  you start up **neovim**, you will find that
-  neovim will automatically install plugins.
-
-### Plugin List
-[PluginList](PluginList.md)
 
 ### Things about Configuration
 + **nvimrc** -- the main configuration file.
   includes the initialization of Vundle and sources other configuration files.
-+ **bundles.vim**
++ **rcfiles/bundles.vim**
   includes all the plugins needed to be installed and how the plugins install.
-+ **bundles.rc.vim**
++ **rcfiles/settings.vim**
   includes the configuration for the plugins installed.
-+ **local.vim**
++ **rcfiles/base.vim**
   includes the configuration for neovim itself, not specified for the plugins.
-+ **.nvim/swap**
-+ **.nvim/undo**
-+ **.nvim/backup**
-+ **.nvim/view**
++ **tmp/swap**
++ **tmp/undo**
++ **tmp/backup**
++ **tmp/view**
 
 ### Thanks
 + the wonderful manager for plugins of vim -- Vundle.vim and its author.

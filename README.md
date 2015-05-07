@@ -1,21 +1,17 @@
-[English Version README](README.EN.md)
+[English Version README](docs/README.EN.md)
 
 ### 概述
 + 这是一份简单的neovim配置，至少目前是这样的。
-+ 只要neovim一启动，这份配置就会自动把插件安装上。
-
-### 插件列表
-[插件列表](PluginList.md)
 
 ### 配置思路
 + **nvimrc** 作为主体，简单的Vundle初始化及包含其他配置文件
-+ **bundles.vim** 包含所有的插件名称和安装方式
-+ **bundles.rc.vim** 包含所有插件的一些配置
-+ **local.vim** 是neovim自身的一些配置，与插件无关
-+ **.nvim/swap**
-+ **.nvim/undo**
-+ **.nvim/backup**
-+ **.nvim/view**
++ **rcfiles/bundles.vim** 包含所有的插件名称和安装方式
++ **rcfiles/settings.vim** 包含所有插件的一些配置
++ **rcfiles/base.vim** 是neovim自身的一些配置，与插件无关
++ **tmp/swap**
++ **tmp/undo**
++ **tmp/backup**
++ **tmp/view**
 
 ### 感谢
 + 出色的插件管理器Vundle.vim
