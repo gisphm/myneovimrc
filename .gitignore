@@ -1,8 +1,4 @@
 bundles/*
-backup/
-swap/
-undo/
-view/
 *.pyc
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
@@ -11,3 +7,4 @@ Session.vim
 .netrwhist
 *~
 *tags
+tmp/
