@@ -29,9 +29,7 @@ filetype plugin indent on
 
 " 其他 {{{
 
-" 调用neovim自身设置
-source ~/.nvim/rcfiles/local.vim
-" 调用插件设置
-source ~/.nvim/rcfiles/bundles.rc.vim
+source ~/.nvim/rcfiles/base.vim
+source ~/.nvim/rcfiles/settings.vim
 
 " }}}
