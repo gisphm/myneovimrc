@@ -7,22 +7,6 @@
 " 关闭文件类型探测，Vundle必须
 filetype off
 
-" 以vundleReadme为存在与否的关键
-" 存在则不用再安装了
-let vundleInitial=1
-let vundleReadme=expand('~/.nvim/bundles/Vundle.vim/README.md')
-if !filereadable(vundleReadme)
-    echo "Installing Vundle ..."
-    echo ""
-    silent !mkdir -p ~/.nvim/bundles
-    silent !mkdir -p ~/.nvim/backup
-    silent !mkdir -p ~/.nvim/swap
-    silent !mkdir -p ~/.nvim/undo
-    silent !mkdir -p ~/.nvim/view
-    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.nvim/bundles/Vundle.vim/
-    let vundleInitial=0
-endif
-
 " }}}
 
 " Vundle 的一点设置 {{{
@@ -33,14 +17,7 @@ set rtp+=~/.nvim/bundles/Vundle.vim
 call vundle#begin('~/.nvim/bundles/')
 
 " 调用插件列表
-source ~/.nvim/bundles.vim
-
-if vundleInitial == 0
-    echo "Installing Bundles, please ignore keymap error messages"
-    echo ""
-    :PluginInstall
-    :qa
-endif
+source ~/.nvim/rcfiles/bundles.vim
 
 " 调用Vundle的结束函数
 call vundle#end()
@@ -53,8 +30,8 @@ filetype plugin indent on
 " 其他 {{{
 
 " 调用neovim自身设置
-source ~/.nvim/local.vim
+source ~/.nvim/rcfiles/local.vim
 " 调用插件设置
-source ~/.nvim/bundles.rc.vim
+source ~/.nvim/rcfiles/bundles.rc.vim
 
 " }}}
