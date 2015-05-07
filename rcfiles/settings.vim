@@ -343,3 +343,10 @@ nnoremap <Space>u :<C-u>Unite -winheight=10 -buffer-name=outline outline<CR>
 nnoremap <Space>g :Unite -winheight=10 -buffer-name=goimport go/import<CR>
 
 " }}}
+
+" Vundle {{{
+
+noremap <leader>vi :PluginInstall<CR>
+noremap <Leader>vu :PluginUpdate<CR>
+
+" }}}
