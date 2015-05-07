@@ -55,6 +55,7 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
+nnoremap <Leader>ar :AirlineRefresh<CR>
 
 " }}}
 
@@ -149,37 +150,13 @@ let tagbar_left=1
 nnoremap <Leader>tl :TagbarToggle<CR>
 let tagbar_width=32
 let g:tagbar_compact=1
-let g:tagbar_type_cpp = {
-            \ 'kinds' : [
-            \ 'd:macros:1',
-            \ 'g:enums',
-            \ 't:typedefs:0:0',
-            \ 'e:enumerators:0:0',
-            \ 'n:namespaces',
+let g:tagbar_type_css = {
+            \ 'ctagstype' : 'Css',
+            \ 'kinds'     : [
             \ 'c:classes',
-            \ 's:structs',
-            \ 'u:unions',
-            \ 'f:functions',
-            \ 'm:members:0:0',
-            \ 'v:global:0:0',
-            \ 'x:external:0:0',
-            \ 'l:local:0:0'
-            \ ],
-            \ 'sro'        : '::',
-            \ 'kind2scope' : {
-            \ 'g' : 'enum',
-            \ 'n' : 'namespace',
-            \ 'c' : 'class',
-            \ 's' : 'struct',
-            \ 'u' : 'union'
-            \ },
-            \ 'scope2kind' : {
-            \ 'enum'      : 'g',
-            \ 'namespace' : 'n',
-            \ 'class'     : 'c',
-            \ 'struct'    : 's',
-            \ 'union'     : 'u'
-            \ }
+            \ 's:selectors',
+            \ 'i:identities'
+            \ ]
             \ }
 
 " }}}
@@ -239,7 +216,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Auto-Pairs {{{
 
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsMapSpace       = 0
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairsFlyMode = 0
 
 " }}}
 
@@ -299,5 +278,69 @@ let g:user_emmet_settings = {
             \ }
 let g:user_emmet_install_global = 0
 autocmd FileType html,javascript,css EmmetInstall
+
+" }}}
+
+" Signify {{{
+
+let g:signify_vcs_list               = ['git']
+let g:signify_cursorhold_insert      = 1
+let g:signify_cursorhold_normal      = 1
+let g:signify_update_on_bufenter     = 1
+let g:signify_update_on_focusgained  = 1
+let g:signify_sign_add               = '✚'
+let g:signify_sign_delete            = '✖'
+let g:signify_sign_delete_first_line = '✭'
+let g:signify_sign_change            = '✹'
+let g:signify_sign_changedelete      = '➜'
+" highlight lines in Sy and vimdiff etc.)
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+" highlight signs in Sy
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+nnoremap <silent> <leader>gg :SignifyToggle<CR>
+nmap <Leader>gj <Plug>(signify-next-hunk)
+nmap <Leader>gk <Plug>(signify-prev-hunk)
+
+" }}}
+
+" Autoformat {{{
+
+noremap <silent> <Space>f :Autoformat<CR>
+
+" }}}
+
+" Tabularize {{{
+
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+nmap <Leader>a=> :Tabularize /=><CR>
+vmap <Leader>a=> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" }}}
+
+" Markdown {{{
+
+augroup MarkdownFiles
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
 
 " }}}
