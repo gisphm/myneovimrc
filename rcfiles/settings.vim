@@ -58,16 +58,6 @@ let g:airline_symbols.readonly = ''
 
 " }}}
 
-" GitGutter {{{
-
-nmap <Leader>hn <Plug>GitGutterNextHunk
-nmap <Leader>hp <Plug>GitGutterPrevHunk
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterRevertHunk
-nmap <Leader>hv <Plug>GitGutterPreviewHunk
-
-" }}}
-
 " NERDTree {{{
 
 autocmd StdinReadPre * let s:std_in=1
@@ -81,19 +71,14 @@ let NERDTreeAutoDeleteBuffer=1
 
 " statusline with git {{{
 
-set statusline=%<%f\                     " Filename
-set statusline+=%w%h%m%r                 " Options
-set statusline+=%{fugitive#statusline()} " Git Hotness
-set statusline+=\ [%{&ff}/%Y]            " Filetype
-set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-
-" }}}
-
-" a.vim {{{
-
-nmap <Leader>ch :A<CR>
-nmap <Leader>sch :AS<CR>
+set statusline=%<%f\
+set statusline+=%w%h%m%r
+if filereadable(expand('~/.nvim/bundles/vim-fugitive/README.md'))
+    set statusline+=%{fugitive#statusline()}
+endif
+set statusline+=\ [%{&ff}/%Y]
+set statusline+=\ [%{getcwd()}]
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 
 " }}}
 
@@ -129,15 +114,15 @@ let g:SignatureMap = {
 
 let g:ycm_complete_in_comments=1
 let g:ycm_auto_trigger = 1
-let g:ycm_confirm_extra_conf=0
-let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_global_ycm_extra_conf='~/.nvim/ycm_extra_conf.py'
 inoremap <leader>; <C-x><C-o>
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion=3
-let g:ycm_cache_omnifunc=0
+let g:ycm_cache_omnifunc = 1
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_filetype_blacklist = {
@@ -258,48 +243,6 @@ let g:AutoPairsFlyMode = 1
 
 " }}}
 
-" Vim-Easy-Align {{{
-
-vmap vip<Enter> <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-let g:easy_align_delimiters = {
-            \ '>': { 'pattern': '>>\|=>\|>'  },
-            \ '/': {
-            \     'pattern':         '//\+\|/\*\|\*/',
-            \     'delimiter_align': 'l',
-            \     'ignore_groups':   ['!Comment']
-            \    },
-            \ ']': {
-            \     'pattern':       '[[\]]',
-            \     'left_margin':   0,
-            \     'right_margin':  0,
-            \     'stick_to_left': 0
-            \    },
-            \ ')': {
-            \     'pattern':       '[()]',
-            \     'left_margin':   0,
-            \     'right_margin':  0,
-            \     'stick_to_left': 0
-            \    },
-            \ 'd': {
-            \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
-            \     'left_margin':  0,
-            \     'right_margin': 0
-            \    }
-            \ }
-
-" }}}
-
-" Clang-Format {{{
-
-nnoremap <silent><Leader>cf :ClangFormat<CR>
-let g:clang_format#code_style = "llvm"
-let g:clang_format#auto_format = 1
-let g:clang_format#auto_format_on_insert_leave = 1
-let g:clang_format#auto_formatexpr = 1
-
-" }}}
-
 " JSHint2 {{{
 
 let jshint2_command = '/home/vagrant/tools/iojs/bin/jshint'
@@ -311,13 +254,6 @@ vnoremap <silent><Space>n :lnext<CR>
 vnoremap <silent><Space>p :lprevious<CR>
 
 "}}}
-
-" SemanticHighlight {{{
-
-nnoremap <Leader>sh :SemanticHighlightToggle<cr>
-let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
-
-" }}}
 
 " emmet-vim {{{
 
