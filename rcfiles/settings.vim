@@ -344,3 +344,29 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 
 " }}}
+
+" Unite.vim {{{
+
+let g:unite_prompt                        = '» '
+let g:unite_split_rule                    = 'botright'
+if executable('ag')
+    let g:unite_source_grep_command       = 'ag'
+    let g:unite_source_grep_default_opts  = '--nocolor --nogroup -S -C4'
+    let g:unite_source_grep_recursive_opt = ''
+elseif executable('pt')
+    let g:unite_source_grep_command       = 'pt'
+    let g:unite_source_grep_default_opts  = '--nogroup --nocolor'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_encoding      = 'utf-8'
+endif
+let g:unite_source_history_yank_enable = 1
+nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
+nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+nnoremap <Leader>p :<C-u>Unite -winheight=10 -buffer-name=file file_rec/async<cr>
+nnoremap <Space>/ :<C-u>Unite -winheight=10 -buffer-name=search grep:.<CR>
+nnoremap <Space>s :<C-u>Unite -winheight=10 -buffer-name=buffers -quick-match buffer<cr>
+nnoremap <leader>y :<C-u>Unite -winheight=10 -buffer-name=yank history/yank<cr>
+nnoremap <Space>u :<C-u>Unite -winheight=10 -buffer-name=outline outline<CR>
+nnoremap <Space>g :Unite -winheight=10 -buffer-name=goimport go/import<CR>
+
+" }}}
