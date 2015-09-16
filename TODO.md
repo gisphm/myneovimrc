@@ -10,3 +10,5 @@
 >    mode from normal mode by typing "i", the cursor may move forward, which is
 >    quite annoying. And even in normal mode, type "x" somewhere in a text, the
 >    next character may be deleted.
+
+> 1. reveal more good plugins and use neovim more often.
