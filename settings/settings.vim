@@ -333,13 +333,6 @@ nnoremap <Space>g :Unite -winheight=10 -buffer-name=goimport go/import<CR>
 
 " }}}
 
-" Vundle {{{
-
-noremap <leader>vi :PluginInstall<CR>
-noremap <Leader>vu :PluginUpdate<CR>
-
-" }}}
-
 " vim-clang {{{
 
 let g:clang_c_completeopt = 'longest,menuone'
@@ -353,23 +346,24 @@ let g:clang_vim_exec = 'nvim'
 
 " completion {{{
 
+set completeopt+=noinsert
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-imap <expr> <Tab> CleverTab()
-function! CleverTab()
-    if pumvisible()
-        return "\<C-n>"
-    endif
-    let substr = strpart(getline('.'), 0, col('.') - 1)
-    let substr = matchstr(substr, '[^ \t]*$')
-    if strlen(substr) == 0
-        " nothing to match on empty string
-        return "\<Tab>"
-    endif
+imap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
 endfunction
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+
+inoremap <expr> 'pumvisible() ? deoplete#mappings#close_popup() : "'"
 
 " }}}
