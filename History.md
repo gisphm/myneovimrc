@@ -2,6 +2,7 @@
 Develop / 2015-10-17
 ====================
 
+  * replace vundle with neobundle
   * update vundlevim address
   * update TODO
   * update TODO

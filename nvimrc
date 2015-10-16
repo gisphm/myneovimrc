@@ -2,37 +2,34 @@
 " vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
 " }}}
 
-" Vundle初始化 {{{
+" NeoBundle Initialization {{{
 
-" 关闭文件类型探测，Vundle必须
-filetype off
+if !1 | finish | endif
 
-" }}}
+set runtimepath+=~/.nvim/bundles/neobundle.vim/
 
-" Vundle 的一点设置 {{{
+call neobundle#begin(expand("~/.nvim/bundles/"))
 
-if filereadable(expand('~/.nvim/bundles/Vundle.vim/README.md'))
-    set rtp+=~/.nvim/bundles/Vundle.vim
-    call vundle#begin('~/.nvim/bundles/')
+NeoBundleFetch "Shougo/neobundle.vim"
 
-    if filereadable(expand('~/.nvim/rcfiles/bundles.vim'))
-        source ~/.nvim/rcfiles/bundles.vim
-    endif
+let vimbundles = '~/.nvim/neobundles/'
+for eachbundle in split(globpath(vimbundles, '*.vim'), '\n')
+    exe 'source' eachbundle
+endfor
 
-    call vundle#end()
-endif
+call neobundle#end()
 
 filetype plugin indent on
 
+NeoBundleCheck
+
 " }}}
 
-" 其他 {{{
+" Load Configurations {{{
 
-if filereadable(expand('~/.nvim/rcfiles/base.vim'))
-    source ~/.nvim/rcfiles/base.vim
-endif
-if filereadable(expand('~/.nvim/rcfiles/settings.vim'))
-    source ~/.nvim/rcfiles/settings.vim
-endif
+let bundlesettings = '~/.nvim/settings/'
+for eachsetting in split(globpath(bundlesettings, '*.vim'), '\n')
+    exe 'source' eachsetting
+endfor
 
 " }}}
