@@ -12,3 +12,5 @@
     next character may be deleted.
 
 1. reveal more good plugins and use neovim more often.
+
+1. replace nerdtree with vimfiler
