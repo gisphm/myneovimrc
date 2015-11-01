@@ -19,7 +19,12 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe', {
+            \ 'build' : {
+            \     'linux' : 'python2 install.py --clang-completer --system-libclang --system-boost',
+            \   },
+            \ 'insert' : 1
+            \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'scrooloose/syntastic'
