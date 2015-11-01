@@ -2,6 +2,7 @@
 Unreleased / 2015-11-01
 =======================
 
+  * [Changed] merge TODO into README
   * [Added] startify
   * [Changed] update TODO
   * [Changed] update TODO
