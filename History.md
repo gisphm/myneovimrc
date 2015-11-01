@@ -2,6 +2,7 @@
 Unreleased / 2015-11-01
 =======================
 
+  * [Removed] one mapping in vimfiler
   * [Changed] update README
   * [Added] vim-rails and omnicomplete settings
   * [Fixed] disable markdown in polyglot
