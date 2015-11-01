@@ -365,3 +365,9 @@ nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 
 " }}}
+
+" Ploygot {{{
+
+let g:polyglot_disabled = [ 'javascript' ]
+
+" }}}
