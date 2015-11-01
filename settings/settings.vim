@@ -558,3 +558,40 @@ hi StartifySpecial ctermfg=240
 " }}}2
 
 " }}}
+
+" vim-ruby {{{
+
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading       = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global    = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails                = 1
+autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile         = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_object       = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_object_space = 1
+
+" }}}
+
+" OmniComplete {{{
+
+if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+                \ if &omnifunc == "" |
+                \     setlocal omnifunc=syntaxcomplete#Complete |
+                \ endif
+endif
+
+hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+
+" Automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" Enable omni-completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal omnifunc=jscomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" }}}

@@ -9,10 +9,7 @@ filetype plugin on
 set incsearch hlsearch
 set ignorecase
 set wildmenu
-set laststatus=2
-set ruler
-set number
-set wrap
+set ruler number
 syntax enable
 syntax on
 filetype indent on
@@ -44,6 +41,7 @@ set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859
 set shortmess+=filmnrxoOtT
 set virtualedit=onemore
 set history=1000
+set winminheight=0
 set hidden
 set iskeyword-=.
 set iskeyword-=#
@@ -57,6 +55,16 @@ if has("eval")
         endif
     endfunction
 endif
+
+set wrap linebreak
+let &showbreak='↪ '
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    set listchars=tab:➪Þ,trail:•,extends:#,nbsp:.,eol:¶
+    let &fillchars="vert:\u259a,fold:\u00b7"
+else
+    set listchars=tab:>\,trail:-,extends:>,precedes:<
+endif
+set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 if executable('ag')
@@ -67,6 +75,8 @@ else
     set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude=tags
 endif
 set grepformat=%f:%l:%c:%m
+
+autocmd FileType * autocmd BufWritePre <buffer> call Preserve("%s/\\s\\+$//e")
 
 " }}}
 
