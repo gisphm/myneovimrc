@@ -1,10 +1,10 @@
 #!/bin/sh
 
-mkdir -p ~/.nvim/bundles
-mkdir -p ~/.nvim/tmp/sessions
-mkdir -p ~/.nvim/tmp/lock
-mkdir -p ~/.nvim/tmp/backup
-mkdir -p ~/.nvim/tmp/swap
-mkdir -p ~/.nvim/tmp/undo
-mkdir -p ~/.nvim/tmp/view
-[[ -d ~/.nvim/bundles/neobundle.vim/ ]] || git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundles/neobundle.vim
+mkdir -p ~/.config/nvim/bundles
+mkdir -p ~/.config/nvim/tmp/sessions
+mkdir -p ~/.config/nvim/tmp/lock
+mkdir -p ~/.config/nvim/tmp/backup
+mkdir -p ~/.config/nvim/tmp/swap
+mkdir -p ~/.config/nvim/tmp/undo
+mkdir -p ~/.config/nvim/tmp/view
+[[ -d ~/.config/nvim/bundles/neobundle.vim/ ]] || git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundles/neobundle.vim

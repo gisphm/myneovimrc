@@ -6,13 +6,13 @@
 
 if !1 | finish | endif
 
-set runtimepath+=~/.nvim/bundles/neobundle.vim/
+set runtimepath+=~/.config/nvim/bundles/neobundle.vim/
 
-call neobundle#begin(expand("~/.nvim/bundles/"))
+call neobundle#begin(expand("~/.config/nvim/bundles/"))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
-let vimbundles = '~/.nvim/neobundles/'
+let vimbundles = '~/.config/nvim/neobundles/'
 for eachbundle in split(globpath(vimbundles, '*.vim'), '\n')
     exe 'source' eachbundle
 endfor
@@ -27,7 +27,7 @@ NeoBundleCheck
 
 " Load Configurations {{{
 
-let bundlesettings = '~/.nvim/settings/'
+let bundlesettings = '~/.config/nvim/settings/'
 for eachsetting in split(globpath(bundlesettings, '*.vim'), '\n')
     exe 'source' eachsetting
 endfor

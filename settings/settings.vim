@@ -96,7 +96,7 @@ let NERDTreeAutoDeleteBuffer=1
 
 set statusline=%<%f\
 set statusline+=%w%h%m%r
-if filereadable(expand('~/.nvim/bundles/vim-fugitive/README.md'))
+if filereadable(expand('~/.config/nvim/bundles/vim-fugitive/README.md'))
     set statusline+=%{fugitive#statusline()}
 endif
 set statusline+=\ [%{&ff}/%Y]
@@ -340,7 +340,7 @@ let g:ycm_auto_trigger = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_global_ycm_extra_conf='~/.nvim/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 inoremap <leader>; <C-x><C-o>
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1

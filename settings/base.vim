@@ -36,12 +36,12 @@ set smarttab
 set splitright
 set splitbelow
 set acd
-set dir=~/.nvim/tmp/swap/
+set dir=~/.config/nvim/tmp/swap/
 set backup
-set backupdir=~/.nvim/tmp/backup/
-set undodir=~/.nvim/tmp/undo/
-set viewdir=~/.nvim/tmp/view/
-set viminfo='10,\"100,:20,n~/.nviminfo
+set backupdir=~/.config/nvim/tmp/backup/
+set undodir=~/.config/nvim/tmp/undo/
+set viewdir=~/.config/nvim/tmp/view/
+set viminfo='10,\"100,:20,n~/.config/nviminfo
 set tags+=./tags,tags
 set completeopt=menuone,preview
 set concealcursor=nc
