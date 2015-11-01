@@ -3,6 +3,7 @@ Unreleased / 2015-11-01
 =======================
 
   * [Changed] update TODO
+  * [Changed] update TODO
   * [Added] webdevicons
   * [Changed] replace nerdtree with vimfiler
   * [Added] flagship and more unite settings
