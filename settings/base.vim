@@ -6,55 +6,67 @@
 
 let mapleader=";"
 filetype plugin on
-set undofile
-set incsearch
+set incsearch hlsearch
 set ignorecase
 set wildmenu
 set laststatus=2
 set ruler
 set number
-set cursorline
-set cursorcolumn
-set hlsearch
 set wrap
 syntax enable
 syntax on
 filetype indent on
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set foldmethod=syntax
-set foldenable
+set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+set foldmethod=syntax foldenable
 set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 set cc=80
 set autochdir
-set ai
+set ai si
 set smarttab
-set splitright
-set splitbelow
+set splitright splitbelow
 set acd
-set dir=~/.config/nvim/tmp/swap/
+
+set undofile
 set backup
+set viewoptions=folds,options,cursor,unix,slash
+set dir=~/.config/nvim/tmp/swap/
 set backupdir=~/.config/nvim/tmp/backup/
 set undodir=~/.config/nvim/tmp/undo/
 set viewdir=~/.config/nvim/tmp/view/
 set viminfo='10,\"100,:20,n~/.config/nviminfo
-set tags+=./tags,tags
-set completeopt=menuone,preview
-set concealcursor=nc
 
+set tags+=./tags,tags
+set completeopt=menuone,preview,noinsert,noselect
+set concealcursor=nc
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
 set shortmess+=filmnrxoOtT
-set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=onemore
 set history=1000
 set hidden
 set iskeyword-=.
 set iskeyword-=#
 set iskeyword-=-
+if has("eval")
+    function! SL(function)
+        if exists('*'.a:function)
+            return call(a:function,[])
+        else
+            return ''
+        endif
+    endfunction
+endif
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+elseif executable('hw')
+    set grepprg=hw\ --no-group\ --no-color\ --follow-link
+else
+    set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude=tags
+endif
+set grepformat=%f:%l:%c:%m
 
 " }}}
 

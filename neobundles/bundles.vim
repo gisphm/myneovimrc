@@ -1,8 +1,8 @@
 " vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
 
-NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-git'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-flagship'
 NeoBundle 'gisphm/vim-gitignore'
 NeoBundle 'idanarye/vim-merginal'
 NeoBundle 'fatih/molokai'

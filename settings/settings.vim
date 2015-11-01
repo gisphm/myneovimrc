@@ -19,68 +19,6 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " }}}
 
-" Airline {{{
-
-" branch and other extensions
-let g:airline#extensions#branch#enabled                 = 1
-let g:airline#extensions#branch#format                  = 1
-let g:airline#extensions#syntastic#enabled              = 1
-let g:airline#extensions#tagbar#enabled                 = 1
-let g:airline#extensions#csv#enabled                    = 1
-let g:airline#extensions#hunks#enabled                  = 1
-let g:airline#extensions#hunks#non_zero_only            = 1
-let g:airline#extensions#whitespace#enabled             = 1
-let g:airline#extensions#whitespace#checks              = [ 'indent', 'trailing' ]
-let g:airline#extensions#whitespace#trailing_format     = 'trailing[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = 'mixed[%s]'
-let g:airline#extensions#whitespace#symbol              = 'Ξ'
-let g:airline#extensions#quickfix#quickfix_text         = 'Qf'
-let g:airline#extensions#eclim#enabled                  = 0
-
-" Statusline theme
-function! AirlineThemePatch(palette)
-    if g:airline_theme == 'badwolf'
-        for colors in values(a:palette.inactive)
-            let colors[3] = 245
-        endfor
-    endif
-endfunction
-let g:airline_theme           = 'badwolf'
-let g:airline_powerline_fonts = 1
-let g:airline_mode_map        = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V',
-            \ '' : 'V',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
-
-" Symbols
-if !exists('g:airline_symbols')
-    let g:airline_symbols        = {}
-endif
-let g:airline_left_sep           = ''
-let g:airline_left_alt_sep       = ''
-let g:airline_right_sep          = ''
-let g:airline_right_alt_sep      = ''
-let g:airline_symbols.linenr     = ''
-let g:airline_symbols.paste      = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.branch     = ''
-let g:airline_symbols.readonly   = ''
-
-" Manually refresh airline when airline doesn't refresh automatically
-nnoremap <Leader>ar :AirlineRefresh<CR>
-nnoremap <Leader>at :AirlineToggle<CR>
-
-" }}}
-
 " NERDTree {{{
 
 autocmd StdinReadPre * let s:std_in=1
@@ -89,19 +27,6 @@ let NERDTreeWinSize=32
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
-
-" }}}
-
-" statusline with git {{{
-
-set statusline=%<%f\
-set statusline+=%w%h%m%r
-if filereadable(expand('~/.config/nvim/bundles/vim-fugitive/README.md'))
-    set statusline+=%{fugitive#statusline()}
-endif
-set statusline+=\ [%{&ff}/%Y]
-set statusline+=\ [%{getcwd()}]
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 
 " }}}
 
@@ -309,27 +234,147 @@ let g:vim_markdown_frontmatter = 1
 
 " Unite.vim {{{
 
+" custom call {{{2
+
+call unite#custom#source(
+            \ 'buffer,file_rec,file_rec/async,file_rec/git',
+            \ 'matchers',
+            \ ['converter_relative_word',
+            \  'matcher_fuzzy',
+            \  'matcher_project_ignore_files']
+            \ )
+call unite#custom#source(
+            \ 'file_mru',
+            \ 'mathers',
+            \ ['matcher_project_files',
+            \  'matcher_fuzzy',
+            \  'matcher_hide_hidden_files',
+            \  'matcher_hide_current_file']
+            \ )
+call unite#custom#source(
+            \ 'file_rec,file_rec/async,file_rec/git,file_mru',
+            \ 'converters',
+            \ ['converter_file_directory']
+            \ )
+
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+call unite#custom#profile('default', 'context', {
+            \ 'start_insert' : 0,
+            \ 'winheight' : 10,
+            \ 'direction' : 'botright',
+            \ 'short_source_names' : 1,
+            \})
+
+" }}}2
+
+" unite common {{{2
+
+let g:unite_enable_auto_select            = 0
 let g:unite_prompt                        = '» '
-let g:unite_split_rule                    = 'botright'
+let g:unite_source_rec_max_cache_files    = -1
 if executable('ag')
     let g:unite_source_grep_command       = 'ag'
-    let g:unite_source_grep_default_opts  = '--nocolor --nogroup -S -C4'
+    let g:unite_source_grep_default_opts  =
+                \ '-i --line-numbers --nocolor --nogroup --hidden ' .
+                \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt = ''
-elseif executable('pt')
-    let g:unite_source_grep_command       = 'pt'
-    let g:unite_source_grep_default_opts  = '--nogroup --nocolor'
+    let g:unite_source_rec_async_command  =
+                \ ['ag', '--follow', '--nocolor', '--nogroup',
+                \  '--hidden', '-g', '']
+elseif executable('hw')
+    let g:unite_source_grep_command       = 'hw'
+    let g:unite_source_grep_default_opts  = '--no-group --no-color'
     let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_grep_encoding      = 'utf-8'
 endif
-let g:unite_source_history_yank_enable = 1
-nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
-nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
-nnoremap <Leader>p :<C-u>Unite -winheight=10 -buffer-name=file file_rec/async<cr>
-nnoremap <Space>/ :<C-u>Unite -winheight=10 -buffer-name=search grep:.<CR>
-nnoremap <Space>s :<C-u>Unite -winheight=10 -buffer-name=buffers -quick-match buffer<cr>
-nnoremap <leader>y :<C-u>Unite -winheight=10 -buffer-name=yank history/yank<cr>
-nnoremap <Space>u :<C-u>Unite -winheight=10 -buffer-name=outline outline<CR>
-nnoremap <Space>g :Unite -winheight=10 -buffer-name=goimport go/import<CR>
+
+" }}}2
+
+" normal mappings {{{2
+
+nnoremap [unite] <Nop>
+nmap <Space>u [unite]
+
+nnoremap [unite]f :<C-u>Unite source<CR>
+nnoremap <silent> [unite]r
+            \ :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]c
+            \ :<C-u>UniteWithCurrentDir -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]b
+            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]y
+            \ :<C-u>Unite -auto-resize -buffer-name=yank history/yank<CR>
+nnoremap <silent> [unite]m
+            \ :<C-u>Unite -auto-resize -buffer-name=recent file_mru<CR>
+nnoremap <silent> [unite]q
+            \ :<C-u>Unite -auto-resize -buffer-name=buffers -quick-match buffer<CR>
+nnoremap <silent> [unite]o
+            \ :<C-u>Unite -auto-resize -buffer-name=outline outline<CR>
+nnoremap <silent> [unite]p
+            \ :<C-u>Unite -auto-resize -buffer-name=tabpages tab<CR>
+nnoremap <silent> [unite]n
+            \ :<C-u>Unite -auto-resize -buffer-name=search grep:.<CR>
+nnoremap <silent> [unite]t
+            \ :<C-u>UniteWithCursorWord -immediately tag/include<CR>
+nnoremap <silent> [unite]j
+            \ :<C-u>Unite -auto-resize -buffer-name=jump jump<CR>
+nnoremap <silent> [unite]s
+            \ :<C-u>Unite -buffer-name=files -no-split
+            \ jump_point file_point buffer_tab
+            \ file_rec:! file file/new <CR>
+nnoremap <silent> <C-p>
+            \ :<C-u>Unite -auto-resize -buffer-name=search file_rec/neovim<CR>
+nnoremap <silent> <Leader>b
+            \ :<C-u>Unite -auto-resize -buffer-name=buffers buffer<CR>
+
+nnoremap <silent> <Space>n :UniteNext<CR>
+nnoremap <silent> <Space>p :UnitePrevious<CR>
+nnoremap <silent> <Leader>d :UniteClose<CR>
+
+" }}}2
+
+" unite function {{{2
+
+autocmd FileType unite call <SID>unite_my_settings()
+function! s:unite_my_settings()"
+    " Overwrite settings.
+
+    imap <buffer> jj      <Plug>(unite_insert_leave)
+    "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+
+    imap <buffer><expr> j unite#smart_map('j', '')
+    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+    imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+    imap <buffer> '     <Plug>(unite_quick_match_default_action)
+    nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+    imap <buffer><expr> x
+                \ unite#smart_map('x', "\<Plug>(unite_quick_match_jump)")
+    nmap <buffer> x     <Plug>(unite_quick_match_jump)
+    nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+    imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+    nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+    nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+    imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+    nnoremap <silent><buffer><expr> l
+                \ unite#smart_map('l', unite#do_action('default'))
+
+    let unite = unite#get_current_unite()
+    if unite.profile_name ==# 'search'
+        nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+    else
+        nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+    endif
+
+    nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+    nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
+                \ empty(unite#mappings#get_current_filters()) ?
+                \ ['sorter_reverse'] : [])
+
+    " Runs "split" action by <C-s>.
+    imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+endfunction
+
+" }}}2
 
 " }}}
 
