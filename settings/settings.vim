@@ -479,7 +479,7 @@ autocmd FileType startify
 
 " Custom Header and Footer {{{2
 
-let s:mud_horse_1 = [
+let s:mud_horse = [
             \ ' ┏┓   ┏┓',
             \ '┏┛┻━━━┛┻┓',
             \ '┃       ┃',
@@ -500,8 +500,6 @@ let s:mud_horse_1 = [
             \ '   ┗┻┛ ┗┻┛',
             \ ]
 
-" }}}3
-
 function! s:center_header(lines) abort
     let l:longest_line = max(map(copy(a:lines), 'len(v:val)'))
     let l:centered_line = map(copy(a:lines), 'repeat(" ", (&columns / 2) - (l:longest_line / 2)) . v:val')
@@ -519,7 +517,6 @@ endfunction
 function! s:RandomHeader() abort
     if executable('fortune') && executable('cowthink')
         let l:headerIndex=s:RandomVim() % 2
-
         if l:headerIndex == 0
             let l:custom_header = split(system('fortune -s | cowthink'), '\n')
         else
@@ -589,5 +586,11 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=jscomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" }}}
+
+" Flagship {{{
+
+
 
 " }}}

@@ -4,6 +4,7 @@
 
 " 常规设置 {{{
 
+scriptencoding utf-8
 let mapleader=";"
 filetype plugin on
 set incsearch hlsearch
@@ -32,7 +33,7 @@ set dir=~/.config/nvim/tmp/swap/
 set backupdir=~/.config/nvim/tmp/backup/
 set undodir=~/.config/nvim/tmp/undo/
 set viewdir=~/.config/nvim/tmp/view/
-set viminfo='10,\"100,:20,n~/.config/nviminfo
+set shada='10,\"100,:20,n~/.config/nvim/tmp/nviminfo
 
 set tags+=./tags,tags,gems.tags
 set completeopt=menuone,preview,noinsert,noselect
@@ -40,32 +41,17 @@ set concealcursor=nc
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1
 set shortmess+=filmnrxoOtT
 set virtualedit=onemore
-set history=1000
 set winminheight=0
 set hidden
 set iskeyword-=.
 set iskeyword-=#
 set iskeyword-=-
-if has("eval")
-    function! SL(function)
-        if exists('*'.a:function)
-            return call(a:function,[])
-        else
-            return ''
-        endif
-    endfunction
-endif
 
 set wrap linebreak
 let &showbreak='↪ '
-if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-    set listchars=tab:➪Þ,trail:•,extends:#,nbsp:.,eol:¶
-    let &fillchars="vert:\u259a,fold:\u00b7"
-else
-    set listchars=tab:>\,trail:-,extends:>,precedes:<
-endif
+set listchars=tab:➪Þ,trail:•,extends:#,nbsp:.,eol:¶
+let &fillchars="vert:\u259a,fold:\u00b7"
 set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 if executable('ag')
     set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
