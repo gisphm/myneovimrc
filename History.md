@@ -1,7 +1,15 @@
 
-Develop / 2015-10-17
-====================
+Unreleased / 2015-11-01
+=======================
 
+  * [Added] webdevicons
+  * [Changed] replace nerdtree with vimfiler
+  * [Added] flagship and more unite settings
+  * [Changed] update TODO
+  * [Added] ployglot
+  * [Added] ycm compile command
+  * [Changed] update files to meet latest changes
+  * [Changed] update spell files from vim source
   * use ycm
   * update deoplete.vim settings
   * replace vundle with neobundle
