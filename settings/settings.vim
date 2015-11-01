@@ -19,14 +19,47 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " }}}
 
-" NERDTree {{{
+" Vimfiler {{{
 
-autocmd StdinReadPre * let s:std_in=1
-map <C-e> :NERDTreeToggle<CR>
-let NERDTreeWinSize=32
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
-let NERDTreeAutoDeleteBuffer=1
+map <C-e> :VimFilerExplorer<CR>
+let g:vimfiler_as_default_explorer     = 1
+let g:loaded_netrwPlugin               = 1
+let g:vimfiler_define_wrapper_commands = 1
+let g:vimfiler_tree_leaf_icon          = "→"
+let g:vimfiler_readonly_file_icon      = ''
+let g:vimfiler_marked_file_icon        = "✓"
+let g:vimfiler_tree_opened_icon        = "▾"
+let g:vimfiler_tree_closed_icon        = "▸"
+let g:vimfiler_file_icon               = "✎"
+let g:vimfiler_max_directories_history = 100
+let g:vimfiler_ignore_pattern          = '\%(\.hg\|\.svn\|\.git\)$'
+
+let g:vimfiler_enable_clipboard = 0
+call vimfiler#custom#profile('default', 'context', {
+            \ 'safe' : 0,
+            \ 'auto_expand' : 1,
+            \ 'parent' : 0,
+            \ 'explorer' : 1
+            \ })
+
+function! s:vimfiler_my_settings() abort
+    nnoremap <silent><buffer> J
+                \ <C-u>:Unite -buffer-name=files -default-action=lcd directory mru<CR>
+    nmap <buffer> p <Plug>(vimfiler_quick_look)
+    nmap <buffer> <Tab> <Plug>(vimfiler_switch_to_other_window)
+    nnoremap <silent><buffer><expr> v
+                \ vimfiler#do_switch_action('vsplite')
+    nnoremap <silent><buffer><expr> s
+                \ vimfiler#do_switch_action('split')
+    if !empty(unite#get_filters('matcher_migemo'))
+        nnoremap <silent><buffer><expr> / line('$') > 10000 ? 'g/' :
+                    \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>"
+    endif
+endfunction
+augroup VimFilerSetting
+    autocmd!
+    autocmd FileType vimfiler call s:vimfiler_my_settings()
+augroup END
 
 " }}}
 
