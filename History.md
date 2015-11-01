@@ -2,6 +2,7 @@
 Unreleased / 2015-11-01
 =======================
 
+  * [Fixed] disable markdown in polyglot
   * [Changed] remove indent guide line in startify
   * [Changed] merge TODO into README
   * [Added] startify

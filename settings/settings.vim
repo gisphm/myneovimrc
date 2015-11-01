@@ -448,7 +448,7 @@ nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 
 " Ploygot {{{
 
-let g:polyglot_disabled = [ 'javascript' ]
+let g:polyglot_disabled = [ 'javascript', 'markdown' ]
 
 " }}}
 
