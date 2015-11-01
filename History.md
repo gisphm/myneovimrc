@@ -2,6 +2,7 @@
 Unreleased / 2015-11-01
 =======================
 
+  * [Changed] update README
   * [Added] vim-rails and omnicomplete settings
   * [Fixed] disable markdown in polyglot
   * [Changed] remove indent guide line in startify

@@ -34,7 +34,7 @@ set undodir=~/.config/nvim/tmp/undo/
 set viewdir=~/.config/nvim/tmp/view/
 set viminfo='10,\"100,:20,n~/.config/nviminfo
 
-set tags+=./tags,tags
+set tags+=./tags,tags,gems.tags
 set completeopt=menuone,preview,noinsert,noselect
 set concealcursor=nc
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,utf-16e,cp2512,iso-8859-15,latin1

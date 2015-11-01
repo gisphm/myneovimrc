@@ -31,12 +31,12 @@
 
 * [ ] add devicons
     - [x] add pluign
-    - [ ] keep update with flagship 
+    - [ ] keep update with flagship
 
 * [ ] replace airline with flagship
     - [x] install flagship
-    - [x] base status line settings 
-    - [ ] customize statusbar for flagship 
+    - [x] basic statusline settings
+    - [ ] customize statusline for flagship
 
 * [ ] add startify
 
