@@ -2,6 +2,7 @@
 Unreleased / 2015-11-01
 =======================
 
+  * [Added] startify
   * [Changed] update TODO
   * [Changed] update TODO
   * [Added] webdevicons

@@ -449,3 +449,110 @@ nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 let g:polyglot_disabled = [ 'javascript' ]
 
 " }}}
+
+" Startify {{{
+
+" Common {{{2
+
+let g:startify_relative_path          = 0
+let g:startify_files_number           = 5
+let g:startify_session_persistence    = 0
+let g:startify_session_autoload       = 0
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_dir          = 1
+let g:startify_change_to_vcs_root     = 1
+let g:startify_enable_special         = 1
+let g:startify_enable_unsafe          = 0
+let g:startify_session_dir            = '~/.config/nvim/session'
+let g:startify_list_order             = [
+            \ ['MRU'], 'files',
+            \ ['Sessions'], 'sessions',
+            \ ]
+let g:startify_skiplist               = [
+            \ 'COMMIT_EDITMSG',
+            \ 'bundle/.*/doc',
+            \ '^/tmp',
+            \ '/home/vagrant/tools',
+            \ ]
+autocmd FileType startify
+            \ setlocal colorcolumn= nospell
+
+" }}}2
+
+" Custom Header and Footer {{{2
+
+let s:mud_horse_1 = [
+            \ ' ┏┓   ┏┓',
+            \ '┏┛┻━━━┛┻┓',
+            \ '┃       ┃',
+            \ '┃   ━   ┃',
+            \ '┃＞   ＜┃',
+            \ '┃       ┃',
+            \ '┃ . ⌒ ..┃',
+            \ '┃       ┃',
+            \ '┗━┓   ┏━┛',
+            \ '  ┃   ┃ Codes are far away from bugs with the animal protecting',
+            \ '  ┃   ┃    神兽保佑, 代码无 bug',
+            \ '  ┃   ┃',
+            \ '  ┃   ┗━━━┓',
+            \ '  ┃       ┣┓',
+            \ '  ┃       ┏┛',
+            \ '  ┗┓┓┏━┳┓┏┛',
+            \ '   ┃┫┫ ┃┫┫',
+            \ '   ┗┻┛ ┗┻┛',
+            \ ]
+
+" }}}3
+
+function! s:center_header(lines) abort
+    let l:longest_line = max(map(copy(a:lines), 'len(v:val)'))
+    let l:centered_line = map(copy(a:lines), 'repeat(" ", (&columns / 2) - (l:longest_line / 2)) . v:val')
+    return l:centered_line
+endfunction
+
+function! s:RandomVim() abort
+    return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+endfunction
+
+" function! RandomSystem() abort
+"     return system('echo $RANDOM')
+" endfunction
+
+function! s:RandomHeader() abort
+    if executable('fortune') && executable('cowthink')
+        let l:headerIndex=s:RandomVim() % 2
+
+        if l:headerIndex == 0
+            let l:custom_header = split(system('fortune -s | cowthink'), '\n')
+        else
+            let l:custom_header = split(system('fortune -s | cowsay'), '\n')
+        endif
+    elseif l:headerIndex == 1
+        let l:custom_header = s:mud_horse
+    endif
+    return s:center_header(l:custom_header)
+endfunction
+
+let g:startify_custom_header = s:RandomHeader()
+
+let g:startify_custom_footer =[
+            \ "", "", strftime('        %A %Y-%m-%d'),
+            \ "        Welcome to Vim World!"
+            \ ]
+
+" }}}2
+
+" Highlights {{{2
+
+hi StartifyBracket ctermfg=240
+hi StartifyFile    ctermfg=147
+hi StartifyFooter  ctermfg=240
+hi StartifyHeader  ctermfg=114
+hi StartifyNumber  ctermfg=215
+hi StartifyPath    ctermfg=245
+hi StartifySlash   ctermfg=240
+hi StartifySpecial ctermfg=240
+
+" }}}2
+
+" }}}
