@@ -11,13 +11,13 @@
     quite annoying. And even in normal mode, type "x" somewhere in a text, the
     next character may be deleted.
 
-* [ ] replace nerdtree with vimfiler
+* [x] replace nerdtree with vimfiler
+
+* [x] replace airline with flagship
+
+* [x] add devicons
 
 * [ ] split plugins into groups
-
-* [ ] replace airline with flagship
-
-* [ ] add devicons
 
 * [ ] optimize base nvim settings
 
