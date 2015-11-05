@@ -308,7 +308,7 @@ if executable('ag')
     let g:unite_source_grep_command       = 'ag'
     let g:unite_source_grep_default_opts  =
                 \ '-i --line-numbers --nocolor --nogroup --hidden ' .
-                \ '--ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore'
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_rec_async_command  =
                 \ ['ag', '--follow', '--nocolor', '--nogroup',
@@ -327,34 +327,7 @@ nnoremap [unite] <Nop>
 nmap <Space>u [unite]
 
 nnoremap [unite]f :<C-u>Unite source<CR>
-nnoremap <silent> [unite]r
-            \ :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]c
-            \ :<C-u>UniteWithCurrentDir -buffer-name=files buffer bookmark file<CR>
-nnoremap <silent> [unite]b
-            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer bookmark file<CR>
-nnoremap <silent> [unite]y
-            \ :<C-u>Unite -auto-resize -buffer-name=yank history/yank<CR>
-nnoremap <silent> [unite]m
-            \ :<C-u>Unite -auto-resize -buffer-name=recent file_mru<CR>
-nnoremap <silent> [unite]q
-            \ :<C-u>Unite -auto-resize -buffer-name=buffers -quick-match buffer<CR>
-nnoremap <silent> [unite]o
-            \ :<C-u>Unite -auto-resize -buffer-name=outline outline<CR>
-nnoremap <silent> [unite]p
-            \ :<C-u>Unite -auto-resize -buffer-name=tabpages tab<CR>
-nnoremap <silent> [unite]n
-            \ :<C-u>Unite -auto-resize -buffer-name=search grep:.<CR>
-nnoremap <silent> [unite]t
-            \ :<C-u>UniteWithCursorWord -immediately tag/include<CR>
-nnoremap <silent> [unite]j
-            \ :<C-u>Unite -auto-resize -buffer-name=jump jump<CR>
-nnoremap <silent> [unite]s
-            \ :<C-u>Unite -buffer-name=files -no-split
-            \ jump_point file_point buffer_tab
-            \ file_rec:! file file/new <CR>
-nnoremap <silent> <C-p>
-            \ :<C-u>Unite -auto-resize -buffer-name=search file_rec/neovim<CR>
+nnoremap [unite]u :<C-u>Unite -auto-resize
 nnoremap <silent> <Leader>b
             \ :<C-u>Unite -auto-resize -buffer-name=buffers buffer<CR>
 
@@ -461,7 +434,7 @@ let g:startify_change_to_dir          = 1
 let g:startify_change_to_vcs_root     = 1
 let g:startify_enable_special         = 1
 let g:startify_enable_unsafe          = 0
-let g:startify_session_dir            = '~/.config/nvim/session'
+let g:startify_session_dir            = '~/.config/nvim/tmp/session'
 let g:startify_list_order             = [
             \ ['MRU'], 'files',
             \ ['Sessions'], 'sessions',
@@ -486,7 +459,7 @@ let s:mud_horse = [
             \ '┃   ━   ┃',
             \ '┃＞   ＜┃',
             \ '┃       ┃',
-            \ '┃ . ⌒ ..┃',
+            \ '┃.. ⌒ ..┃',
             \ '┃       ┃',
             \ '┗━┓   ┏━┛',
             \ '  ┃   ┃ Codes are far away from bugs with the animal protecting',

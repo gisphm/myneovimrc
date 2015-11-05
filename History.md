@@ -1,7 +1,8 @@
 
-Unreleased / 2015-11-01
+Unreleased / 2015-11-05
 =======================
 
+  * [Changed] update unite.vim settings
   * [Changed] update some settings
   * [Removed] one mapping in vimfiler
   * [Changed] update README

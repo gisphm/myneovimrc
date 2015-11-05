@@ -46,6 +46,7 @@ set hidden
 set iskeyword-=.
 set iskeyword-=#
 set iskeyword-=-
+set showtabline=0
 
 set wrap linebreak
 let &showbreak='↪ '
