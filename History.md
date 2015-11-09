@@ -1,7 +1,8 @@
 
-Unreleased / 2015-11-05
+Unreleased / 2015-11-10
 =======================
 
+  * [Added] replace some plugins with polyglot
   * [Changed] update unite.vim settings
   * [Changed] update some settings
   * [Removed] one mapping in vimfiler
