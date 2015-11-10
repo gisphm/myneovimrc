@@ -124,11 +124,13 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
 " UltiSnips {{{
 
-let g:UltiSnipsExpandTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<Leader>f"
-let g:UltiSnipsJumpBackwardTrigger="<Leader>b"
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger       = "<C-k>"
+let g:UltiSnipsJumpForwardTrigger  = "<Leader>f"
+let g:UltiSnipsJumpBackwardTrigger = "<Leader>b"
+let g:UltiSnipsUsePythonVersion    = 2
+let g:UltiSnipsEditSplit           = "vertical"
+let g:UltiSnipsEnableSnipMate      = 0
+let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
 
 " }}}
 
@@ -384,32 +386,32 @@ endfunction
 
 " YouCompleteMe {{{
 
-let g:ycm_complete_in_comments=1
-let g:ycm_auto_trigger = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_complete_in_comments                          = 1
+let g:ycm_auto_trigger                                  = 1
+let g:ycm_confirm_extra_conf                            = 0
+let g:ycm_collect_identifiers_from_tags_files           = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
-inoremap <leader>; <C-x><C-o>
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion=3
-let g:ycm_cache_omnifunc = 1
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_filetype_whitelist = { '*': 1 }
-let g:ycm_filetype_blacklist = {
-            \ 'tagbar' : 1,
-            \ 'qf' : 1,
-            \ 'notes' : 1,
-            \ 'unite' : 1,
-            \ 'text' : 1,
+let g:ycm_global_ycm_extra_conf                         = '~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt                    = 1
+let g:ycm_autoclose_preview_window_after_completion     = 1
+let g:ycm_min_num_of_chars_for_completion               = 3
+let g:ycm_cache_omnifunc                                = 1
+let g:ycm_seed_identifiers_with_syntax                  = 1
+let g:ycm_filetype_whitelist                            = { '*': 1 }
+let g:ycm_filetype_blacklist                            = {
+            \ 'tagbar'  : 1,
+            \ 'qf'      : 1,
+            \ 'notes'   : 1,
+            \ 'unite'   : 1,
+            \ 'text'    : 1,
             \ 'vimwiki' : 1,
-            \ 'pandoc' : 1,
+            \ 'pandoc'  : 1,
             \ 'infolog' : 1,
-            \ 'mail' : 1
+            \ 'mail'    : 1
             \ }
 let g:ycm_filetype_specific_completion_to_disable = {
             \ }
+inoremap <leader>; <C-x><C-o>
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 

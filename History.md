@@ -2,6 +2,7 @@
 Unreleased / 2015-11-10
 =======================
 
+  * [Added] disable snipmate snippets
   * [Added] replace some plugins with polyglot
   * [Changed] update unite.vim settings
   * [Changed] update some settings
