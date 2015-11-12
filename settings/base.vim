@@ -47,6 +47,7 @@ set iskeyword-=.
 set iskeyword-=#
 set iskeyword-=-
 set showtabline=0
+set mouse=
 
 set wrap linebreak
 let &showbreak='↪ '
@@ -152,5 +153,8 @@ augroup END
 
 " git提交时光标在第一行
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
 
 " }}}

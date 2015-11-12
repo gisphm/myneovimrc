@@ -1,7 +1,8 @@
 
-Unreleased / 2015-11-10
+Unreleased / 2015-11-12
 =======================
 
+  * [Added] dbext.vim and python_host_prog settings
   * [Added] disable snipmate snippets
   * [Added] replace some plugins with polyglot
   * [Changed] update unite.vim settings
