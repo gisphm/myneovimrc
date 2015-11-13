@@ -1,7 +1,7 @@
 " vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
 
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-flagship'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'gisphm/vim-gitignore'
 NeoBundle 'idanarye/vim-merginal'
 NeoBundle 'fatih/molokai'
@@ -10,6 +10,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'mhinz/vim-signify'
