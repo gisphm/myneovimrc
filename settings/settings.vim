@@ -128,18 +128,6 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
 " }}}
 
-" UltiSnips {{{
-
-let g:UltiSnipsExpandTrigger       = "<C-k>"
-let g:UltiSnipsJumpForwardTrigger  = "<Leader>f"
-let g:UltiSnipsJumpBackwardTrigger = "<Leader>b"
-let g:UltiSnipsUsePythonVersion    = 2
-let g:UltiSnipsEditSplit           = "vertical"
-let g:UltiSnipsEnableSnipMate      = 0
-let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
-
-" }}}
-
 " Auto-Pairs {{{
 
 let g:AutoPairsMapSpace       = 0
@@ -806,6 +794,56 @@ let g:vimfiler_force_overwrite_statusline = 0
 
 " deoplete {{{
 
+set completeopt+=noinsert,noselect
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#auto_completion_start_length = 3
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.ruby =
+            \ ['[^. *\t]\.\w*', '\h\w*::']
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.ruby =
+            \ ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+inoremap <expr><Tab> <SID>CleverTab()
+inoremap <expr><C-h>
+            \ deolete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>
+            \ deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><Space> pumvisible()? deoplete#mappings#smart_close_popup() : "\<Space>"
+
+function! s:CleverTab()
+    if pumvisible()
+        return "\<C-n>"
+    endif
+    let substr = strpart(getline('.'), 0, col('.') - 1)
+    let substr = matchstr(substr, '[^ \t]*$')
+    if strlen(substr) == 0
+        " nothing to match on empty string
+        return "\<Tab>"
+    else
+        if neosnippet#jumpable()
+            return "\<Plug>(neosnippet_jump)"
+        else
+            return deoplete#mappings#start_manual_complete()
+        endif
+    endif
+endfunction
+
+" }}}
+
+" neosnippet {{{
+
+let g:snips_author                     = "gisphm"
+let g:snips_email                      = "phmfk@hotmail.com"
+let g:snips_github                     = "https://github.com/gisphm"
+let g:neosnippet#expand_word_boundary  = 1
+let g:neosnippet#scope_aliases         = {}
+let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails,gemfile'
+
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <expr><silent><C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-e>" : "<Plug>(neosnippet_expand_or_jump)")
+smap <Tab> <Plug>(neosnippet_jump)
+inoremap <silent> (( <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
 
 " }}}

@@ -1,13 +1,15 @@
 " vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
 
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neco-vim'
 NeoBundle 'Shougo/neco-syntax'
 NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'gisphm/vim-snippets-neosnippet'
 NeoBundle 'gisphm/vim-polyglot'
 NeoBundle 'chrisbra/unicode.vim', {
             \ 'build' : {
