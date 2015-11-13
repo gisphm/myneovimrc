@@ -2,6 +2,7 @@
 Unreleased / 2015-11-13
 =======================
 
+  * [Changed] change order of plugins
   * [Added] pangu and some settings
   * [Added] lightline.vim
   * [Added] dbext.vim and python_host_prog settings

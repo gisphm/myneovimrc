@@ -11,7 +11,7 @@ set runtimepath+=~/.config/nvim/bundles/neobundle.vim/
 call neobundle#begin(expand("~/.config/nvim/bundles/"))
 
 NeoBundleFetch "Shougo/neobundle.vim"
-source ~/.config/nvim/bundles.vim
+source ~/.config/nvim/neobundles.vim
 
 call neobundle#end()
 
