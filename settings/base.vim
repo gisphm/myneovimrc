@@ -23,7 +23,7 @@
 if &shell =~# 'fish$'
     set shell=/bin/bash
 else
-    set shell=/bin/sh
+    set shell=/bin/zsh
 endif
 set background=dark
 filetype plugin on

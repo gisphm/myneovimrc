@@ -2,6 +2,7 @@
 Unreleased / 2015-11-13
 =======================
 
+  * [Added] pangu and some settings
   * [Added] lightline.vim
   * [Added] dbext.vim and python_host_prog settings
   * [Added] disable snipmate snippets

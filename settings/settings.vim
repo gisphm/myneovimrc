@@ -10,6 +10,12 @@ let g:rehash256 = 1
 
 " }}}
 
+" NeoBundle {{{
+
+nnoremap <leader>nu :Unite neobundle/update -log<CR>
+
+" }}}
+
 " indent guides {{{
 
 let g:indent_guides_enable_on_vim_startup               = 1
@@ -258,10 +264,36 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 augroup MarkdownFiles
     autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}
+                \ setlocal filetype=markdown formatoptions=tcroqn2 comments=n:>
+    autocmd FileType markdown execute 'setlocal dict+=~/.config/nvim/words/emoji_dict'
 augroup END
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+let g:markdown_fenced_languages = []
+let g:markdown_fenced_languages = [
+            \ 'coffee',
+            \ 'css',
+            \ 'erb=eruby',
+            \ 'javascript',
+            \ 'js=javascript',
+            \ 'json=javascript',
+            \ 'ruby',
+            \ 'sass',
+            \ 'xml',
+            \ 'vim',
+            \ ]
+
+" }}}
+
+" Pangu {{{
+
+if exists(":Pangu")
+    augroup PanguFormat
+        autocmd!
+        autocmd BufWritePre *.{md,mdwn,mkd,mkdn,mark*},*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
+    augroup END
+endif
 
 " }}}
 
@@ -465,7 +497,7 @@ let s:mud_horse = [
             \ '┃       ┃',
             \ '┗━┓   ┏━┛',
             \ '  ┃   ┃ Codes are far away from bugs with the animal protecting',
-            \ '  ┃   ┃    神兽保佑, 代码无 bug',
+            \ '  ┃   ┃    神兽保佑，代码无 bug',
             \ '  ┃   ┃',
             \ '  ┃   ┗━━━┓',
             \ '  ┃       ┣┓',

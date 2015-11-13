@@ -47,3 +47,16 @@ NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'gisphm/dbext.vim'
+NeoBundle 'reedes/vim-wordy'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundleLazy 'vimwiki/vimwiki', {
+            \ 'rev' : 'dev',
+            \ 'autoload' : { 'filetypes' : ['vimwiki'] },
+            \ }
+NeoBundleLazy 'hotoo/pangu.vim', {
+            \ 'autoload' : {
+            \   'filetypes' : [
+            \     'markdown', 'text', 'vimwiki', 'cnx'
+            \     ]
+            \   }
+            \ }
