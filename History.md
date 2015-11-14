@@ -2,6 +2,7 @@
 Unreleased / 2015-11-14
 =======================
 
+  * [Removed] ycm_extra_conf.py
   * [Added] deoplete and neosnippet settings
   * [Added] deoplete and neosnippet.vim and settings
   * [Changed] change order of plugins

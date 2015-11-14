@@ -69,7 +69,7 @@ set dir=~/.config/nvim/tmp/swap/
 set backupdir=~/.config/nvim/tmp/backup/
 set undodir=~/.config/nvim/tmp/undo/
 set viewdir=~/.config/nvim/tmp/view/
-set viminfo+=f1,n$HOME/.config/nvim/tmp/nviminfo viminfo^=!
+set shada+=f1,n$HOME/.config/nvim/tmp/nviminfo viminfo^=!
 
 " Resolve performance problems
 " clear match command gracefully
