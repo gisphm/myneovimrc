@@ -153,6 +153,7 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
 else
     set listchars=tab:>\,trail:-,extends:>,precedes:<
 endif
+set showtabline=0
 
 highlight clear SignColumn
 highlight clear LineNr

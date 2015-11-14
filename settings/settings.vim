@@ -551,283 +551,21 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " }}}
 
-" Lightline {{{
-
-" Components {{{2
-
-let g:lightline                    = {}
-let g:lightline.colorscheme        = 'solarized'
-let g:lightline.active             = {
-            \   'left': [
-            \     [ 'mode', 'paste' ],
-            \     [ 'fugitive', 'signify', 'filename' ],
-            \   ],
-            \   'right': [
-            \     [ 'syntastic', 'spacecheck', 'lineinfo' ],
-            \     [ 'filetype', 'percent', 'wordcount' ],
-            \     [ 'fileformat', 'fileencoding' ]
-            \   ]
-            \ }
-let g:lightline.inactive           = {
-            \   'left': [
-            \     [ 'mode', 'paste' ],
-            \     [ 'fugitive', 'filename' ],
-            \   ],
-            \   'right': [
-            \     [ 'filetype', 'percent' ],
-            \     [ 'fileformat', 'fileencoding' ]
-            \   ]
-            \ }
-let g:lightline.component_function = {
-            \   'mode'         : 'LightLineMode',
-            \   'percent'      : 'LightLinePercent',
-            \   'lineinfo'     : 'LightLineLineinfo',
-            \   'fugitive'     : 'LightLineFugitive',
-            \   'readonly'     : 'LightLineReadonly',
-            \   'modified'     : 'LightLineModified',
-            \   'signify'      : 'LightLineSignify',
-            \   'filename'     : 'LightLineFilename',
-            \   'fileformat'   : 'LightLineFileformat',
-            \   'filetype'     : 'LightLineFiletype',
-            \   'fileencoding' : 'LightLineFileencoding',
-            \   'spacecheck'   : 'LightLineSpaceCheck',
-            \   'wordcount'    : 'LightLineWordCount'
-            \ }
-let g:lightline.component_expand   = {
-            \   'syntastic'    : 'SyntasticStatuslineFlag',
-            \ }
-let g:lightline.component_type     = {
-            \   'syntastic'    : 'error',
-            \   'spacecheck'   : 'warning',
-            \ }
-let g:lightline.separator          = { 'left': '⮀', 'right': '⮂' }
-let g:lightline.subseparator       = { 'left': '⮁', 'right': '⮃' }
-let g:lightline.mode_map           = {
-            \ '__'     : '-',
-            \ 'n'      : 'N',
-            \ 'i'      : 'I',
-            \ 'R'      : 'R',
-            \ 'c'      : 'C',
-            \ 'v'      : 'V',
-            \ 's'      : 'S',
-            \ 'V'      : 'V-LINE',
-            \ "\<C-v>" : 'V-BLOCK',
-            \ 'S'      : 'S-LINE',
-            \ "\<C-s>" : 'S-BLOCK',
-            \ '?'      : '      '
-            \ }
-
-" }}}2
-
-" Component Functions {{{2
-
-let s:skip_filetypes = 'startify\|help\|unite\|vimfiler\|tagbar\|undotree\|calendar'
-
-function! LightLineMode()
-    let l:fname = expand('%:t')
-    if &ft == 'tagbar'
-        let l:mode = 'Tagbar'
-    elseif &ft == 'undotree'
-        let l:mode = 'Undo'
-    elseif l:fname =~ 'diffpanel'
-        let l:mode = 'Diff'
-    elseif &ft == 'unite'
-        let l:mode = 'Unite'
-    elseif &ft == 'vimfiler'
-        let l:mode = 'VimFiler'
-    elseif &ft == 'startify'
-        let l:mode = 'Starify'
-    else
-        let l:mode = lightline#mode()
-    endif
-    return l:mode
-endfunction
-
-function! LightLineModified()
-    return &ft =~ 'help\|vimfiler\|undotree' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-    return &readonly || !&modifiable ? '⭤' : ''
-endfunction
-
-function! LightLineFilename()
-    let l:fname = expand('%:t')
-    let l:display = ''
-    if &ft == 'vimfiler'
-        let l:display = vimfiler#get_status_string()
-    elseif &ft == 'unite'
-        let l:display = unite#get_status_string()
-    elseif &ft == 'startify'
-        let l:display = ''
-    else
-        let l:display = ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-                    \ ('' != fname ? fname : '[No Name]') .
-                    \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-    endif
-    return l:display . ' ' . WebDevIconsGetFileTypeSymbol()
-endfunction
-
-function! LightLineFugitive()
-    if winwidth(0) < 70 || &ft == '' || &ft =~ s:skip_filetypes
-        return ''
-    endif
-    if exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? '⭠ '._ : ''
-    endif
-    return ''
-endfunction
-
-function! LightLineSignify()
-    if winwidth(0) < 70 || !strlen(fugitive#head())
-        return ''
-    endif
-    let l:symbols = ['+', '-', '~']
-    let [added, modified, removed] = sy#repo#get_stats()
-    let l:stats = [added, removed, modified]  " reorder
-    let l:hunkline = ''
-
-    for i in range(3)
-        if l:stats[i] > 0
-            let l:hunkline .= printf('%s%s ', l:symbols[i], l:stats[i])
-        else
-            let l:hunkline .= ''
-        endif
-    endfor
-
-    if !empty(l:hunkline)
-        let l:hunkline = printf('%s', l:hunkline[:-2])
-    endif
-
-    return l:hunkline
-endfunction
-
-function! LightLineFileformat()
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70
-        return ''
-    endif
-    return WebDevIconsGetFileFormatSymbol()
-endfunction
-
-function! LightLineFiletype()
-    if winwidth(0) < 70 || &filetype == 'startify'
-        return ''
-    else
-        return strlen(&filetype) ? &filetype : ''
-    endif
-endfunction
-
-function! LightLineFileencoding()
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70
-        return ''
-    endif
-    return strlen(&fenc) ? &fenc : &enc
-endfunction
-
-function! LightLineLineinfo() abort
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70
-        return ''
-    endif
-    return printf(' %3s:%-2s', line('.'), col('.'))
-endfunction
-
-function! LightLinePercent() abort
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70
-        return ''
-    endif
-    return printf('%5.1f%%', line('.')*100.0/line('$'))
-endfunction
-
-function! LightLineSpaceCheck() abort
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70
-        return ''
-    endif
-    let l:spacecheck_warning = ''
-    let l:space = search('\s\+$', 'nw')
-    if l:space != 0
-        let l:spacecheck_warning .= printf('trail[%s]', l:space)
-    endif
-    return l:spacecheck_warning
-endfunction
-
-function! LightLineWordCount() abort
-    if &filetype =~ s:skip_filetypes || winwidth(0) < 70 || executable('wc') != 1
-        return ''
-    endif
-
-    if !exists("s:word_count") || !exists("s:old_stats") || !exists("s:started_count")
-        let s:word_count = ''
-        let s:old_stats = 0
-        let s:started_count = 0
-    endif
-
-    if s:started_count == 0
-        let s:word_count = matchstr(split(system('wc -w ' . expand('%'))), '\d\+')
-        let s:started_count = 1
-    elseif !&modified && s:old_stats
-        let s:word_count = matchstr(split(system('wc -w ' . expand('%'))), '\d\+')
-    endif
-
-    let s:old_stats = &modified
-
-    return s:word_count
-endfunction
-
-" }}}2
-
-" Others {{{2
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-endfunction
-
-let g:unite_force_overwrite_statusline    = 0
-let g:vimfiler_force_overwrite_statusline = 0
-
-" }}}2
-
-" }}}
-
 " deoplete {{{
 
 set completeopt+=noinsert,noselect
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#auto_completion_start_length = 3
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.ruby =
+let g:deoplete#enable_at_startup                  = 1
+let g:deoplete#enable_ignore_case                 = 1
+let g:deoplete#auto_completion_start_length       = 3
+let g:deoplete#omni_patterns                      = {}
+let g:deoplete#omni_patterns.ruby                 =
             \ ['[^. *\t]\.\w*', '\h\w*::']
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ruby =
+let g:deoplete#omni#input_patterns                = {}
+let g:deoplete#omni#input_patterns.ruby           =
             \ ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-inoremap <expr><Tab> <SID>CleverTab()
-inoremap <expr><C-h>
-            \ deolete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>
             \ deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><Space> pumvisible()? deoplete#mappings#smart_close_popup() : "\<Space>"
-
-function! s:CleverTab()
-    if pumvisible()
-        return "\<C-n>"
-    endif
-    let substr = strpart(getline('.'), 0, col('.') - 1)
-    let substr = matchstr(substr, '[^ \t]*$')
-    if strlen(substr) == 0
-        " nothing to match on empty string
-        return "\<Tab>"
-    else
-        if neosnippet#jumpable()
-            return "\<Plug>(neosnippet_jump)"
-        else
-            return deoplete#mappings#start_manual_complete()
-        endif
-    endif
-endfunction
+inoremap <expr><Space> pumvisible()? deoplete#mappings#close_popup() : "\<Space>"
 
 " }}}
 
@@ -840,10 +578,41 @@ let g:neosnippet#expand_word_boundary  = 1
 let g:neosnippet#scope_aliases         = {}
 let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails,gemfile'
 
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <expr><silent><C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-e>" : "<Plug>(neosnippet_expand_or_jump)")
+inoremap <C-k> <Plug>(neosnippet_expand)
+smap <C-k> <Plug>(neosnippet_expand)
+inoremap <expr><silent><C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : (pumvisible() ? "\<C-e>" : "\<Plug>(neosnippet_expand)")
 smap <Tab> <Plug>(neosnippet_jump)
+if pumvisible()
+    inoremap <Tab> <C-n>
+elseif neosnippet#jumpable()
+    inoremap <Tab> <Plug>(neosnippet_jump)
+else
+    inoremap <Tab> <Tab>
+endif
 inoremap <silent> (( <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
+
+" }}}
+
+" EasyAlign {{{
+
+vmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" }}}
+
+" EasyMotion {{{
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " }}}

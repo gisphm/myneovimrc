@@ -19,7 +19,8 @@ NeoBundle 'chrisbra/unicode.vim', {
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'fatih/molokai'
-NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-flagship'
+" NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mhinz/vim-signify'
 

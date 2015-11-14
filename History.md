@@ -2,6 +2,7 @@
 Unreleased / 2015-11-14
 =======================
 
+  * [Added] deoplete and neosnippet settings
   * [Added] deoplete and neosnippet.vim and settings
   * [Changed] change order of plugins
   * [Added] pangu and some settings
