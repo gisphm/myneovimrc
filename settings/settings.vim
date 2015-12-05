@@ -430,7 +430,7 @@ let g:startify_list_order             = [
             \ ]
 let g:startify_skiplist               = [
             \ 'COMMIT_EDITMSG',
-            \ 'bundles/.*/doc',
+            \ '/bundles/',
             \ '^/tmp',
             \ '/home/vagrant/tools',
             \ ]
