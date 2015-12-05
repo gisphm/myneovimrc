@@ -7,6 +7,8 @@ Session.vim
 *~
 tmp/
 bundles/
+plugged/
+local.vim
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

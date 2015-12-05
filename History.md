@@ -2,6 +2,7 @@
 Unreleased / 2015-12-05
 =======================
 
+  * [Changed] use vim-plugin
   * [Removed] some plugins
   * [Removed] ycm_extra_conf.py
   * [Added] deoplete and neosnippet settings
