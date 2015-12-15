@@ -1,7 +1,8 @@
 
-Unreleased / 2015-12-05
+Unreleased / 2015-12-15
 =======================
 
+  * [Changed] update plug and add jedi and pymode
   * [Changed] use vim-plugin
   * [Removed] some plugins
   * [Removed] ycm_extra_conf.py

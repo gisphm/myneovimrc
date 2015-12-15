@@ -10,9 +10,19 @@ let g:rehash256 = 1
 
 " }}}
 
-" NeoBundle {{{
+" Plugin Manager Mappings {{{
 
-nnoremap <leader>nu :Unite neobundle/update -log<CR>
+if g:custom_plugin_manager == 0
+    nnoremap <leader>nu :Unite neobundle/update -log<CR>
+    nnoremap <leader>ni :Unite neobundle/install -auto-quit<cr>
+    nnoremap <leader>nc :neobundleclean<cr>
+    nnoremap <leader>nl :neobundleupdateslog<cr>
+else
+    nnoremap <leader>nu :PlugUpdate<cr>
+    nnoremap <leader>ni :PlugInstall<cr>
+    nnoremap <leader>nc :PlugClean<cr>
+    nnoremap <leader>np :PlugUpgrade<cr>
+endif
 
 " }}}
 
@@ -563,6 +573,31 @@ let g:deoplete#omni_patterns.ruby                 =
 let g:deoplete#omni#input_patterns                = {}
 let g:deoplete#omni#input_patterns.ruby           =
             \ ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+imap <silent><expr> <TAB> <SID>CleverTab()
+function! s:CleverTab()
+    if pumvisible()
+        return "\<C-n>"
+    endif
+    let substr = strpart(getline('.'), 0, col('.') - 1)
+    let substr = matchstr(substr, '[^ \t]*$')
+    if strlen(substr) == 0
+        " nothing to match on empty string
+        return "\<Tab>"
+    else
+        if neosnippet#jumpable()
+            return "\<Plug>(neosnippet_jump)"
+        else
+            return deoplete#mappings#manual_complete()
+        endif
+    endif
+endfunction
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+
+call deoplete#custom#set('_', 'converters',
+            \ ['converter_auto_delimiter', 'remove_overlap'])
+
 inoremap <expr><BS>
             \ deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><Space> pumvisible()? deoplete#mappings#close_popup() : "\<Space>"
@@ -577,19 +612,9 @@ let g:snips_github                     = "https://github.com/gisphm"
 let g:neosnippet#expand_word_boundary  = 1
 let g:neosnippet#scope_aliases         = {}
 let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails,gemfile'
+let g:neosnippet#scope_aliases['html'] = 'htmldjango,html'
 
-inoremap <C-k> <Plug>(neosnippet_expand)
-smap <C-k> <Plug>(neosnippet_expand)
-inoremap <expr><silent><C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : (pumvisible() ? "\<C-e>" : "\<Plug>(neosnippet_expand)")
-smap <Tab> <Plug>(neosnippet_jump)
-if pumvisible()
-    inoremap <Tab> <C-n>
-elseif neosnippet#jumpable()
-    inoremap <Tab> <Plug>(neosnippet_jump)
-else
-    inoremap <Tab> <Tab>
-endif
-inoremap <silent> (( <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
+imap <silent><C-k> <Plug>(neosnippet_expand)
 
 " }}}
 
@@ -614,5 +639,53 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" }}}
+
+" Jedi {{{
+
+augroup Jedi
+    autocmd!
+    autocmd BufEnter *.py setlocal updatetime=4000
+    autocmd FileType python setlocal omnifunc=jedi#completions completeopt-=preview
+augroup END
+let g:jedi#completions_enabled        = 0
+let g:jedi#auto_vim_configuration     = 0
+let g:jedi#popup_select_first         = 0
+let g:jedi#smart_auto_mappings        = 0
+let g:jedi#show_call_signatures_delay = 4000
+let g:jedi#use_tag_stack              = 1
+let g:jedi#force_py_version           = 3
+let g:jedi#show_call_signatures       = 0
+
+" }}}
+
+" Pymode {{{
+
+let g:pymode_options              = 0
+let g:pymode_warnings             = 1
+let g:pymode_indent               = 1
+let g:pymode_folding              = 1
+let g:pymode_doc                  = 1
+let g:pymode_rope                 = 1
+let g:pymode_rope_completion      = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_autoimport      = 0
+let g:pymode_syntax               = 1
+let g:pymode_syntax_all           = 1
+let g:pymode_trim_whitespaces     = 1
+let g:pymode_options_colorcolumn  = 1
+let g:pymode_lint                 = 1
+let g:pymode_lint_on_write        = 1
+let g:pymode_lint_unmodified      = 0
+let g:pymode_lint_on_fly          = 0
+let g:pymode_python               = 'python3'
+let g:pymode_lint_todo_symbol     = 'T'
+let g:pymode_lint_comment_symbol  = 'C'
+let g:pymode_lint_visual_symbol   = 'V'
+let g:pymode_lint_error_symbol    = 'E'
+let g:pymode_lint_info_symbol     = 'I'
+let g:pymode_lint_pyflakes_symbol = 'P'
+let g:pymode_lint_checkers        = ['mccabe', 'pep8', 'pyflakes']
 
 " }}}
