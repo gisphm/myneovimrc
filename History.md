@@ -1,7 +1,8 @@
 
-Unreleased / 2015-12-15
+Unreleased / 2015-12-24
 =======================
 
+  * [Changed] update gitignore and other settings
   * [Changed] update plug and add jedi and pymode
   * [Changed] use vim-plugin
   * [Removed] some plugins

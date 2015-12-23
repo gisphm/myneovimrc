@@ -7,4 +7,5 @@ mkdir -p ~/.config/nvim/tmp/backup
 mkdir -p ~/.config/nvim/tmp/swap
 mkdir -p ~/.config/nvim/tmp/undo
 mkdir -p ~/.config/nvim/tmp/view
-[[ -d ~/.config/nvim/bundles/neobundle.vim/ ]] || git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundles/neobundle.vim
+# [[ -d ~/.config/nvim/bundles/neobundle.vim/ ]] || git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundles/neobundle.vim
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

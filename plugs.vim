@@ -8,6 +8,7 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'gisphm/vim-polyglot'
 Plug 'chrisbra/unicode.vim', { 'do' : 'mkdir -p autoload/unicode/ && wget -q http://www.unicode.org/Public/UNIDATA/UnicodeData.txt -O autoload/unicode/UnicodeData.txt', }
 Plug 'scrooloose/syntastic'

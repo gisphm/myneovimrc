@@ -554,10 +554,8 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " Enable omni-completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType javascript setlocal omnifunc=jscomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby setlocal omnifunc=
 
 " }}}
 
@@ -573,6 +571,8 @@ let g:deoplete#omni_patterns.ruby                 =
 let g:deoplete#omni#input_patterns                = {}
 let g:deoplete#omni#input_patterns.ruby           =
             \ ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+let g:deoplete#omni#input_patterns.python =
+            \ '[^. *\t]\.\w*\|\h\w*'
 imap <silent><expr> <TAB> <SID>CleverTab()
 function! s:CleverTab()
     if pumvisible()
@@ -665,7 +665,7 @@ let g:jedi#show_call_signatures       = 0
 let g:pymode_options              = 0
 let g:pymode_warnings             = 1
 let g:pymode_indent               = 1
-let g:pymode_folding              = 1
+let g:pymode_folding              = 0
 let g:pymode_doc                  = 1
 let g:pymode_rope                 = 1
 let g:pymode_rope_completion      = 0
@@ -676,7 +676,7 @@ let g:pymode_syntax_all           = 1
 let g:pymode_trim_whitespaces     = 1
 let g:pymode_options_colorcolumn  = 1
 let g:pymode_lint                 = 1
-let g:pymode_lint_on_write        = 1
+let g:pymode_lint_on_write        = 0
 let g:pymode_lint_unmodified      = 0
 let g:pymode_lint_on_fly          = 0
 let g:pymode_python               = 'python3'
