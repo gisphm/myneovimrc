@@ -689,3 +689,76 @@ let g:pymode_lint_pyflakes_symbol = 'P'
 let g:pymode_lint_checkers        = ['mccabe', 'pep8', 'pyflakes']
 
 " }}}
+
+" Airline {{{
+
+" branch and other extensions
+let g:airline#extensions#branch#enabled                 = 1
+let g:airline#extensions#branch#format                  = 1
+let g:airline#extensions#syntastic#enabled              = 1
+let g:airline#extensions#tagbar#enabled                 = 1
+let g:airline#extensions#csv#enabled                    = 1
+let g:airline#extensions#hunks#enabled                  = 1
+let g:airline#extensions#hunks#non_zero_only            = 1
+let g:airline#extensions#whitespace#enabled             = 1
+let g:airline#extensions#whitespace#checks              = [ 'indent', 'trailing' ]
+let g:airline#extensions#whitespace#trailing_format     = 'tw[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = 'm[%s]'
+let g:airline#extensions#whitespace#symbol              = 'Ξ'
+let g:airline#extensions#quickfix#quickfix_text         = 'Qf'
+let g:airline#extensions#eclim#enabled                  = 0
+
+" Statusline theme
+function! AirlineThemePatch(palette)
+    if g:airline_theme == 'badwolf'
+        for colors in values(a:palette.inactive)
+            let colors[3] = 245
+        endfor
+    endif
+endfunction
+let g:airline_theme           = 'badwolf'
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map        = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
+
+" Symbols
+if !exists('g:airline_symbols')
+    let g:airline_symbols        = {}
+endif
+let g:airline_left_sep           = ''
+let g:airline_left_alt_sep       = ''
+let g:airline_right_sep          = ''
+let g:airline_right_alt_sep      = ''
+let g:airline_symbols.linenr     = ''
+let g:airline_symbols.paste      = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.branch     = ''
+let g:airline_symbols.readonly   = ''
+
+" Manually refresh airline when airline doesn't refresh automatically
+nnoremap <Leader>ar :AirlineRefresh<CR>
+nnoremap <Leader>at :AirlineToggle<CR>
+
+" }}}
+
+" statusline with git {{{
+
+set statusline=%<%f\
+set statusline+=%w%h%m%r
+set statusline+=%{fugitive#statusline()}
+set statusline+=\ [%{&ff}/%Y]
+set statusline+=\ [%{getcwd()}]
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+
+" }}}

@@ -14,7 +14,7 @@ Plug 'chrisbra/unicode.vim', { 'do' : 'mkdir -p autoload/unicode/ && wget -q htt
 Plug 'scrooloose/syntastic'
 
 Plug 'fatih/molokai'
-Plug 'tpope/vim-flagship'
+Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 
