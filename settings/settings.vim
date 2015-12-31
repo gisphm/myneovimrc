@@ -12,17 +12,10 @@ let g:rehash256 = 1
 
 " Plugin Manager Mappings {{{
 
-if g:custom_plugin_manager == 0
-    nnoremap <leader>nu :Unite neobundle/update -log<CR>
-    nnoremap <leader>ni :Unite neobundle/install -auto-quit<cr>
-    nnoremap <leader>nc :neobundleclean<cr>
-    nnoremap <leader>nl :neobundleupdateslog<cr>
-else
-    nnoremap <leader>nu :PlugUpdate<cr>
-    nnoremap <leader>ni :PlugInstall<cr>
-    nnoremap <leader>nc :PlugClean<cr>
-    nnoremap <leader>np :PlugUpgrade<cr>
-endif
+nnoremap <leader>nu :PlugUpdate<cr>
+nnoremap <leader>ni :PlugInstall<cr>
+nnoremap <leader>nc :PlugClean<cr>
+nnoremap <leader>np :PlugUpgrade<cr>
 
 " }}}
 
