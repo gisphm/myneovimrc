@@ -29,16 +29,9 @@
 
 * [x] replace nerdtree with vimfiler
 
-* [ ] add devicons
-    - [x] add pluign
-    - [ ] keep update with flagship
+* [x] add devicons
 
-* [ ] replace airline with flagship
-    - [x] install flagship
-    - [x] basic statusline settings
-    - [ ] customize statusline for flagship
-
-* [ ] add startify
+* [x] add startify
 
 * [ ] optimize base nvim settings
 

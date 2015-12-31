@@ -2,6 +2,7 @@
 Unreleased / 2015-12-31
 =======================
 
+  * [Changed] remove neobundles.vim and update README
   * [Changed] bring ariline back
   * [Changed] update gitignore and other settings
   * [Changed] update plug and add jedi and pymode
