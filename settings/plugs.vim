@@ -549,6 +549,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=
+autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 
 " }}}
 
@@ -683,6 +684,17 @@ let g:pymode_lint_checkers        = ['mccabe', 'pep8', 'pyflakes']
 
 " }}}
 
+" statusline {{{
+
+set statusline=%<%f\
+set statusline+=%w%h%m%r
+set statusline+=%{fugitive#statusline()}
+set statusline+=\ [%{&ff}/%Y]
+set statusline+=\ [%{getcwd()}]
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+
+" }}}
+
 " Airline {{{
 
 " branch and other extensions
@@ -709,9 +721,15 @@ function! AirlineThemePatch(palette)
         endfor
     endif
 endfunction
-let g:airline_theme           = 'badwolf'
-let g:airline_powerline_fonts = 1
-let g:airline_mode_map        = {
+let g:airline_theme             = 'badwolf'
+let g:airline_theme_patch_func  = 'AirlineThemePatch'
+let g:airline_powerline_fonts   = 1
+let g:airline_detect_modified   = 1
+let g:airline_detect_iminsert   = 0
+let g:airline_detect_paste      = 1
+let g:airline_detect_crypt      = 1
+let g:airline_inactive_collapse = 1
+let g:airline_mode_map          = {
             \ '__' : '-',
             \ 'n'  : 'N',
             \ 'i'  : 'I',
@@ -742,16 +760,5 @@ let g:airline_symbols.readonly   = ''
 " Manually refresh airline when airline doesn't refresh automatically
 nnoremap <Leader>ar :AirlineRefresh<CR>
 nnoremap <Leader>at :AirlineToggle<CR>
-
-" }}}
-
-" statusline with git {{{
-
-set statusline=%<%f\
-set statusline+=%w%h%m%r
-set statusline+=%{fugitive#statusline()}
-set statusline+=\ [%{&ff}/%Y]
-set statusline+=\ [%{getcwd()}]
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 
 " }}}

@@ -13,6 +13,6 @@ call plug#end()
 " Load Configurations {{{
 
 source ~/.config/nvim/settings/base.vim
-source ~/.config/nvim/settings/settings.vim
+source ~/.config/nvim/settings/plugs.vim
 
 " }}}

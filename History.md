@@ -1,7 +1,8 @@
 
-Unreleased / 2015-12-31
+Unreleased / 2016-01-02
 =======================
 
+  * [Changed] add phpcd and remove molokai
   * [Removed] neobundle initialization and mappings
   * [Changed] remove neobundles.vim and update README
   * [Changed] bring ariline back

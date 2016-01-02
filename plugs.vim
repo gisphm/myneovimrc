@@ -12,8 +12,9 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'gisphm/vim-polyglot'
 Plug 'chrisbra/unicode.vim', { 'do' : 'mkdir -p autoload/unicode/ && wget -q http://www.unicode.org/Public/UNIDATA/UnicodeData.txt -O autoload/unicode/UnicodeData.txt', }
 Plug 'scrooloose/syntastic'
+Plug 'phpvim/phpcd.vim', { 'for' : 'php' }
+Plug 'vim-scripts/progressbar-widget'
 
-Plug 'fatih/molokai'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
@@ -22,7 +23,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'othree/vim-syntax-enhanced'
 Plug 'Shutnik/jshint2.vim'
 Plug 'othree/xml.vim'
 Plug 'mattn/emmet-vim'
@@ -45,10 +45,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'kana/vim-operator-user'
 Plug 's3rvac/AutoFenc'
 Plug 'junegunn/vim-easy-align'
+Plug 'kassio/neoterm'
 
 Plug 'reedes/vim-wordy'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev', 'for': 'vimwiki' }
 Plug 'hotoo/pangu.vim', { 'for': ['markdown', 'text', 'vimwiki', 'cnx'] }
 
-Plug 'davidhalter/jedi-vim', { 'for' : ['python'] }
-Plug 'wilywampa/python-mode', { 'branch' : 'develop', 'for' : ['python'] }
+Plug 'davidhalter/jedi-vim', { 'for' : 'python' }
+Plug 'wilywampa/python-mode', { 'branch' : 'develop', 'for' : 'python' }
